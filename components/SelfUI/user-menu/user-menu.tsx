@@ -28,6 +28,7 @@ import {
   Users,
   MessageCircle,
   Bell,
+  Star,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -73,6 +74,12 @@ export default function UserMenu() {
               <SheetTitle className="flex items-center gap-2 text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
                 <Bell />
                 <span>Notifications</span>
+              </SheetTitle>
+            {/* </Link> */}
+            {/* <Link onClick={() => setOpen(false)} href="/favourites"> */}
+              <SheetTitle className="flex items-center gap-2 text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
+                <Star />
+                <span>Favourites</span>
               </SheetTitle>
             {/* </Link> */}
             <Link onClick={() => setOpen(false)} href="/settings">
