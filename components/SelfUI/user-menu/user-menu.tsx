@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Sheet,
   SheetContent,
@@ -7,7 +9,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
+import { useState } from "react";
 import { Separator } from "@/components/ui/separator";
 import {
   Cloud,
@@ -27,11 +29,16 @@ import {
   MessageCircle,
   Bell,
 } from "lucide-react";
+import Link from "next/link";
 
 export default function UserMenu() {
+
+ const [open, setOpen] = useState(false);
+    
+
   return (
     <div className="">
-      <Sheet>
+      <Sheet open = {open} onOpenChange={setOpen}>
         <SheetTrigger>
           <Avatar>
             <AvatarImage src="" />
@@ -50,27 +57,37 @@ export default function UserMenu() {
               </div>
             </SheetTitle>
             <Separator />
-            <SheetTitle className="flex items-center gap-2 text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
-              <User />
-              <span>Profile</span>
-            </SheetTitle>
-            <SheetTitle className="flex items-center gap-2 text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
-              <MessageCircle />
-              <span>Messages</span>
-            </SheetTitle>
-            <SheetTitle className="flex items-center gap-2 text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
-              <Bell />
-              <span>Notifications</span>
-            </SheetTitle>
-            <SheetTitle className="flex items-center gap-2 text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
-              <Settings />
-              <span>Settings</span>
-            </SheetTitle>
+            <Link onClick={() => setOpen(false)} href="/profile">
+              <SheetTitle className="flex items-center gap-2 text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
+                <User />
+                <span>Profile</span>
+              </SheetTitle>
+            </Link>
+            <Link onClick={() => setOpen(false)} href="/messages">
+              <SheetTitle className="flex items-center gap-2 text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
+                <MessageCircle />
+                <span>Messages</span>
+              </SheetTitle>
+            </Link>
+            {/* <Link href="/profile"> */}
+              <SheetTitle className="flex items-center gap-2 text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
+                <Bell />
+                <span>Notifications</span>
+              </SheetTitle>
+            {/* </Link> */}
+            <Link onClick={() => setOpen(false)} href="/settings">
+              <SheetTitle className="flex items-center gap-2 text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
+                <Settings />
+                <span>Settings</span>
+              </SheetTitle>
+            </Link>
             <Separator />
-            <SheetTitle className="flex items-center gap-2 text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
-              <LogOut />
-              <span>Sign out</span>
-            </SheetTitle>
+            {/* <Link href="/profile"> */}
+              <SheetTitle className="flex items-center gap-2 text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
+                <LogOut />
+                <span>Sign out</span>
+              </SheetTitle>
+            {/* </Link> */}
           </SheetHeader>
         </SheetContent>
       </Sheet>
