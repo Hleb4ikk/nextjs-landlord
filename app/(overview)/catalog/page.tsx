@@ -1,3 +1,5 @@
+import GeolocationComponent from "@/components/SelfUI/geolocation/geolocation";
+
 export default function Catalog() {
-  return <>catalog</>;
+  return <><GeolocationComponent/></>;
 }

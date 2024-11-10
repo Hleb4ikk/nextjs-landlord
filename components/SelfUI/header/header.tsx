@@ -11,7 +11,7 @@ import {
   // NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 import UserMenu from "../user-menu/user-menu";
-
+import GeolocationComponent from "../geolocation/geolocation";
 interface HeaderProps {
   isMobile?: boolean;
 }
@@ -36,10 +36,10 @@ export default function Header({ isMobile }: HeaderProps) {
                   <NavigationMenuItem>Item One</NavigationMenuItem>
                 </Link>
                 <Link href="/">
-                  <NavigationMenuItem>Item Two</NavigationMenuItem>
+                  <NavigationMenuItem><GeolocationComponent/></NavigationMenuItem>
                 </Link>
                 <Link href="/">
-                  <NavigationMenuItem>Item Three</NavigationMenuItem>
+                  <NavigationMenuItem>New post</NavigationMenuItem>
                 </Link>
               </NavigationMenuList>
             </NavigationMenu>
