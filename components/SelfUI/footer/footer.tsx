@@ -11,7 +11,7 @@ import {
 const MobileBottomMenu = () => {
   return( 
   <footer className="fixed w-[100vw] pt-3 pb-3 flex justify-center gap-[14vw] bottom-0 border-t border-white">
-
+    {/* links for mobileBottomMenu */}
     <Link href="/catalog">
       <House size={28}/>
     </Link>
