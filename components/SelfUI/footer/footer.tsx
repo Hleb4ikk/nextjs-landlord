@@ -32,11 +32,11 @@ const MobileBottomMenu = () => {
 };
 
 interface FooterProps {
-  isMobile?: boolean;
+  width: number;
 }
 
-export default function Footer({ isMobile }: FooterProps) {
+export default function Footer({ width }: FooterProps) {
   return <>
-    {isMobile && <MobileBottomMenu />}
+    {(width < 768) && <MobileBottomMenu />}
   </>;
 }
