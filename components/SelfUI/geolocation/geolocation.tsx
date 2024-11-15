@@ -1,19 +1,21 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const GeolocationComponent = () => {
-  const [country, setCountry] = useState('');
-  const [city, setCity] = useState('');
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
 
   useEffect(() => {
     const fetchCity = async () => {
       try {
-        const response = await axios.get('https://ipinfo.io/json?token=f67ec411c8f1d3');
+        const response = await axios.get(
+          "https://ipinfo.io/json?token=f67ec411c8f1d3"
+        );
         setCity(response.data.city);
       } catch (error) {
-        console.error('Get city error: ', error);
+        console.error("Get city error: ", error);
       }
     };
 
@@ -23,19 +25,25 @@ const GeolocationComponent = () => {
   useEffect(() => {
     const fetchCountry = async () => {
       try {
-        const response = await axios.get('https://ipinfo.io/json?token=f67ec411c8f1d3');
+        const response = await axios.get(
+          "https://ipinfo.io/json?token=f67ec411c8f1d3"
+        );
         setCountry(response.data.country);
       } catch (error) {
-        console.error('Get country error: ', error);
+        console.error("Get country error: ", error);
       }
     };
 
     fetchCountry();
   }, []);
 
-  return (
-    <span>{country}, {city}</span>
-  );
+  if (country != "" && city != "") {
+    return (
+      <span>
+        {country}, {city}
+      </span>
+    );
+  } else return <span>Geolocation not found</span>;
 };
 
 export default GeolocationComponent;
