@@ -32,10 +32,12 @@ export default function Header({
             </div>
             {!(width < 768) && (
               <div className="">
-                <Search
-                  placeholder="Search posts..."
-                  className="text-white bg-[#1e1e1e] border-[#363636] border-2 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-2 placeholder:text-slate-600"
-                />
+                <Suspense>
+                  <Search
+                    placeholder="Search posts..."
+                    className="text-white bg-[#1e1e1e] border-[#363636] border-2 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-2 placeholder:text-slate-600"
+                  />
+                </Suspense>
               </div>
             )}
           </div>
