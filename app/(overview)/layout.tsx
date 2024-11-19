@@ -6,11 +6,10 @@ import Footer from "@/components/SelfUI/footer/footer"
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   
-  const [width, setWidth] = useState(768);
+  const [width, setWidth] = useState(767);
 
   useEffect(() =>{
-
-    const handleResize = () => setWidth(window.innerWidth);
+    const handleResize = () => setWidth(innerWidth);
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
