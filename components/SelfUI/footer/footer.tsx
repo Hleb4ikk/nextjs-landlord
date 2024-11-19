@@ -18,9 +18,9 @@ const MobileBottomMenu = () => {
     {/* <Link href="/favourites"> */}
       <Star size={28}/>
     {/* </Link> */}
-    {/* <Link href="/create"> */}
+    <Link href="/create"> 
       <CirclePlus size={28}/>
-    {/* </Link> */}
+    </Link> 
     <Link href="/messages">
       <MessageCircle size={28}/>
     </Link>
@@ -32,11 +32,11 @@ const MobileBottomMenu = () => {
 };
 
 interface FooterProps {
-  isMobile?: boolean;
+  width: number;
 }
 
-export default function Footer({ isMobile }: FooterProps) {
+export default function Footer({ width }: FooterProps) {
   return <>
-    {isMobile && <MobileBottomMenu />}
+    {(width < 768) && <MobileBottomMenu />}
   </>;
 }

@@ -1,3 +1,3 @@
 export default function Catalog() {
-  return <>Catalog</>;
-}
+    return <>Create</>;
+  }

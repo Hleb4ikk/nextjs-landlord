@@ -5,12 +5,11 @@ import Header from "../../components/SelfUI/header/header";
 import Footer from "@/components/SelfUI/footer/footer"
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-
-  const [isMobile, setIsMobile] = useState(false);
+  
+  const [width, setWidth] = useState(767);
 
   useEffect(() =>{
-
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    const handleResize = () => setWidth(window.innerWidth);
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -19,9 +18,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen">
-      <Header isMobile={isMobile}/>
-      <div className="">{children}</div>
-      <Footer isMobile={isMobile}/>
+      <Header width={width}/>
+      <div className="pr-3 pl-3 md:pl-10 md:pr-10">{children}</div>
+      <Footer width={width}/>
     </div>
   );
 }

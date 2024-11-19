@@ -1,51 +1,74 @@
 import Link from "next/link";
 import { DarkThemeTextLogo } from "../logo/landlord-logo";
-import {
-  NavigationMenu,
-  // NavigationMenuContent,
-  // NavigationMenuIndicator,
-  NavigationMenuItem,
-  // NavigationMenuLink,
-  NavigationMenuList,
-  // NavigationMenuTrigger,
-  // NavigationMenuViewport,
-} from "@/components/ui/navigation-menu";
+import { NewPostButton } from "../button/button";
 import UserMenu from "../user-menu/user-menu";
+import GeolocationComponent from "../geolocation/geolocation";
+import { Bell } from "lucide-react";
+import Search from "../search";
+import { Suspense } from "react";
 
-interface HeaderProps {
-  isMobile?: boolean;
-}
-
-export default function Header({ isMobile }: HeaderProps) {
+export default function Header({
+  searchParams,
+  width,
+}: {
+  searchParams?: {
+    query?: string;
+    page?: string;
+  };
+  width: number;
+}) {
+  const query = searchParams?.query || "";
+  const currentPage = Number(searchParams?.page) || 1;
+  console.log(query + currentPage);
   return (
     <>
-      <header className="w-full sticky grid grid-rows-2 items-center pl-10 pr-10 pt-3 md:pt-2 md:flex ">
-        <div className="flex items-center gap-16 justify-center order-2 md:justify-start md:w-[50%] md:order-1">
-          <div className="hidden md:flex md:items-center">
-            <Link href="/">
-              <DarkThemeTextLogo className="text-xl" />
-            </Link>
+      <header className="w-full sticky items-center pl-3 pr-3 md:pl-10 md:pr-10 pt-3">
+        <div className="flex w-full">
+          <div className="flex items-center gap-10 justify-start w-[50%]">
+            <div className="flex items-center">
+              <Link href="/catalog">
+                <DarkThemeTextLogo className="text-xl" />
+              </Link>
+            </div>
+            {!(width < 768) && (
+              <div className="">
+                <Suspense>
+                  <Search
+                    placeholder="Search posts..."
+                    className="text-white bg-[#1e1e1e] border-[#363636] border-2 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-2 placeholder:text-slate-600"
+                  />
+                </Suspense>
+              </div>
+            )}
           </div>
-          <div className="">Search</div>
-        </div>
-        <div className="flex items-center gap-10 justify-center order-1 md:justify-end md:w-[50%] md:order-2">
-          <div className="">
-            <NavigationMenu>
-              <NavigationMenuList className="gap-10">
-                <Link href="/">
-                  <NavigationMenuItem>Item One</NavigationMenuItem>
-                </Link>
-                <Link href="/">
-                  <NavigationMenuItem>Item Two</NavigationMenuItem>
-                </Link>
-                <Link href="/">
-                  <NavigationMenuItem>Item Three</NavigationMenuItem>
-                </Link>
-              </NavigationMenuList>
-            </NavigationMenu>
+          <div className="flex items-center gap-7 justify-end w-[50%]">
+            <div>
+              <GeolocationComponent />
+            </div>
+            {!(width < 768) && (
+              <NewPostButton url="/create">
+                {width < 832 && <span>New</span>}
+                {!(width < 832) && <span>New post</span>}
+              </NewPostButton>
+            )}
+            {!(width < 768) && <UserMenu />}
+            {width < 768 && (
+              <button className="">
+                <Bell size={28} />
+              </button>
+            )}
           </div>
-          {(!isMobile && <UserMenu/>)}
         </div>
+        {width < 768 && (
+          <div className="pt-1 pb-1">
+            <Suspense>
+              <Search
+                placeholder="Search posts..."
+                className="text-white bg-[#1e1e1e] border-[#363636] border-2 focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-slate-600"
+              />
+            </Suspense>
+          </div>
+        )}
       </header>
     </>
   );

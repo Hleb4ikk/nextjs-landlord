@@ -6,15 +6,14 @@ interface ButtonProps {
   url: string;
   children?: React.ReactNode;
 }
-
-export default function HomePageButton({ className, url, children }: ButtonProps) {
+const HomePageButton = ({ className, url, children }: ButtonProps) => {
   return (
     <Link href={url}>
-      <div className={className}>
+      <div>
         <button
-          className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden 
-    font-medium text-white rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 
-    "
+          className={"relative inline-flex items-center justify-center p-0.5 overflow-hidden " +
+    "font-medium text-white rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 " + 
+    className}
         >
           <span
             className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-gray-900 
@@ -26,4 +25,26 @@ export default function HomePageButton({ className, url, children }: ButtonProps
       </div>
     </Link>
   );
-}
+};
+
+const NewPostButton = ({ className, url, children }: ButtonProps) => {
+  return (
+    <Link href={url}>
+      <button
+        className={
+          "relative inline-flex items-center justify-center p-0.5 overflow-hidden " +
+          "font-medium text-white rounded-lg group bg-[#363636] " +
+          className
+        }
+      >
+        <span
+          className="w-full relative px-5 py-2.5 transition-all ease-in duration-75 bg-[#1e1e1e] 
+      rounded-md group-hover:bg-opacity-0 group-active:bg-opacity-100"
+        >
+          {children}
+        </span>
+      </button>
+    </Link>
+  );
+};
+export { HomePageButton, NewPostButton };

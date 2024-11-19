@@ -1,5 +1,5 @@
 import { DarkThemeLogo } from "@/components/SelfUI/logo/landlord-logo";
-import HomePageButton from "../components/SelfUI/button/button";
+import {HomePageButton} from "../components/SelfUI/button/button";
 import { Video } from "../components/SelfUI/video";
 
 export default function Home() {
@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <main>
         <Video
-          className="hidden xl:block absolute w-full h-full object-cover -z-10  opacity-[50%]"
+          className="hidden xl:block absolute w-full h-full object-cover -z-10 opacity-[50%]"
           src="/Videos/HomeVideoSrc.mp4"
           width="1280"
           height="720"

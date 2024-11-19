@@ -12,20 +12,9 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useState } from "react";
 import { Separator } from "@/components/ui/separator";
 import {
-  Cloud,
-  CreditCard,
-  Github,
-  Keyboard,
-  LifeBuoy,
   LogOut,
-  Mail,
-  MessageSquare,
-  Plus,
-  PlusCircle,
   Settings,
   User,
-  UserPlus,
-  Users,
   MessageCircle,
   Bell,
   Star,
@@ -35,8 +24,6 @@ import Link from "next/link";
 export default function UserMenu() {
 
  const [open, setOpen] = useState(false);
-    
-
   return (
     <div className="">
       <Sheet open = {open} onOpenChange={setOpen}>
