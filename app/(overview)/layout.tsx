@@ -9,7 +9,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const [width, setWidth] = useState(767);
 
   useEffect(() =>{
-    const handleResize = () => setWidth(innerWidth);
+    const handleResize = () => setWidth(window.innerWidth);
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
