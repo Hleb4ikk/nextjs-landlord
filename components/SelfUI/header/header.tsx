@@ -20,7 +20,6 @@ export default function Header(
 ) {
   const query = searchParams?.query || "";
   const currentPage = Number(searchParams?.page) || 1;
-
   return (
     <>
       <header className="w-full sticky items-center pl-3 pr-3 md:pl-10 md:pr-10 pt-3">

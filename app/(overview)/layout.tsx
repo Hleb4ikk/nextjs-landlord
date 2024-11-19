@@ -5,8 +5,8 @@ import Header from "../../components/SelfUI/header/header";
 import Footer from "@/components/SelfUI/footer/footer"
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-
-  const [width, setWidth] = useState(window.innerWidth);
+  
+  const [width, setWidth] = useState(768);
 
   useEffect(() =>{
 

@@ -18,9 +18,9 @@ const MobileBottomMenu = () => {
     {/* <Link href="/favourites"> */}
       <Star size={28}/>
     {/* </Link> */}
-    {/* <Link href="/create"> */}
+    <Link href="/create"> 
       <CirclePlus size={28}/>
-    {/* </Link> */}
+    </Link> 
     <Link href="/messages">
       <MessageCircle size={28}/>
     </Link>
