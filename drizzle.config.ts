@@ -1,11 +1,11 @@
 import "dotenv/config";
 import { defineConfig } from "drizzle-kit";
 export default defineConfig({
-  out: "./drizzle",
+  out: "./drizzle/migrations",
   schema: [
-    "./server/db/users.ts",
-    "./server/db/advertisements.ts",
-    "./server/db/ad-images.ts",
+    "./drizzle/schemas/users.ts",
+    "./drizzle/schemas/advertisements.ts",
+    "./drizzle/schemas/ad-images.ts",
   ],
   dialect: "postgresql",
   dbCredentials: {

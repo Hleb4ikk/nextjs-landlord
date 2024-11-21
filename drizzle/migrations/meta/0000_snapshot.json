@@ -1,5 +1,5 @@
 {
-  "id": "03d995e2-7e67-4289-a38a-ff0f7fee76f6",
+  "id": "3ed6911e-aa44-4494-b3de-d0df26e4db41",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -39,6 +39,14 @@
           "primaryKey": false,
           "notNull": true
         },
+        "user_role": {
+          "name": "user_role",
+          "type": "userRoles",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'user'"
+        },
         "registered_at": {
           "name": "registered_at",
           "type": "timestamp",
@@ -50,7 +58,15 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
+      "uniqueConstraints": {
+        "users_email_unique": {
+          "name": "users_email_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "email"
+          ]
+        }
+      },
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false
@@ -66,8 +82,8 @@
           "notNull": true,
           "default": "gen_random_uuid()"
         },
-        "user_id": {
-          "name": "user_id",
+        "author_id": {
+          "name": "author_id",
           "type": "uuid",
           "primaryKey": false,
           "notNull": true
@@ -90,16 +106,23 @@
           "primaryKey": false,
           "notNull": false,
           "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
         }
       },
       "indexes": {},
       "foreignKeys": {
-        "advertisements_user_id_users_user_id_fk": {
-          "name": "advertisements_user_id_users_user_id_fk",
+        "advertisements_author_id_users_user_id_fk": {
+          "name": "advertisements_author_id_users_user_id_fk",
           "tableFrom": "advertisements",
           "tableTo": "users",
           "columnsFrom": [
-            "user_id"
+            "author_id"
           ],
           "columnsTo": [
             "user_id"
