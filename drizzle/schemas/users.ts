@@ -13,6 +13,6 @@ export const UsersTable = pgTable("users", {
   email: varchar("email", { length: 256 }).notNull().unique(),
   age: integer("age").notNull(),
   hashedPassword: varchar("hashed_password", { length: 100 }).notNull(),
-  role: UserRole("user_role").default("user").notNull(),
+  role: UserRole().default("user").notNull(),
   registeredAt: timestamp("registered_at").defaultNow(),
 });

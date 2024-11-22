@@ -1,10 +1,11 @@
+CREATE TYPE "public"."role" AS ENUM('admin', 'user');--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "users" (
 	"user_id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"username" varchar(128) NOT NULL,
 	"email" varchar(256) NOT NULL,
 	"age" integer NOT NULL,
 	"hashed_password" varchar(100) NOT NULL,
-	"user_role" "userRoles" DEFAULT 'user' NOT NULL,
+	"role" "role" DEFAULT 'user' NOT NULL,
 	"registered_at" timestamp DEFAULT now(),
 	CONSTRAINT "users_email_unique" UNIQUE("email")
 );
