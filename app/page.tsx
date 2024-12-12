@@ -2,7 +2,7 @@
 import { DarkThemeLogo } from "@/components/SelfUI/logo/landlord-logo";
 import {HomePageButton} from "../components/SelfUI/button/button";
 import { Video } from "../components/SelfUI/video";
-
+import { MoveUpRight } from "lucide-react";
 export default function Home() {
   return (
     <>
@@ -37,7 +37,7 @@ export default function Home() {
               </p>
             </div>
             <HomePageButton url="/catalog" className="md:text-xl">
-              To catalog ↗
+              To catalog <span><MoveUpRight className="inline" size={22}/></span>
             </HomePageButton>
           </div>
         </div>

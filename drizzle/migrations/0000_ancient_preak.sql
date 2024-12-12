@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS "users" (
 	"username" varchar(128) NOT NULL,
 	"email" varchar(256) NOT NULL,
 	"age" integer NOT NULL,
-	"hashed_password" varchar(100) NOT NULL,
+	"hashed_password" varchar NOT NULL,
 	"role" "role" DEFAULT 'user' NOT NULL,
 	"registered_at" timestamp DEFAULT now(),
 	CONSTRAINT "users_email_unique" UNIQUE("email")

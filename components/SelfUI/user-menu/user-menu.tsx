@@ -46,31 +46,31 @@ export default function UserMenu() {
             </SheetTitle>
             <Separator />
             <Link onClick={() => setOpen(false)} href="/profile">
-              <SheetTitle className="flex items-center gap-2 text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
+              <SheetTitle className="flex items-center gap-2 font-normal text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
                 <User />
                 <span>Profile</span>
               </SheetTitle>
             </Link>
             <Link onClick={() => setOpen(false)} href="/messages">
-              <SheetTitle className="flex items-center gap-2 text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
+              <SheetTitle className="flex items-center gap-2 font-normal text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
                 <MessageCircle />
                 <span>Messages</span>
               </SheetTitle>
             </Link>
             {/* <Link href="/profile"> */}
-              <SheetTitle className="flex items-center gap-2 text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
+              <SheetTitle className="flex items-center gap-2 font-normal text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
                 <Bell />
                 <span>Notifications</span>
               </SheetTitle>
             {/* </Link> */}
             {/* <Link onClick={() => setOpen(false)} href="/favourites"> */}
-              <SheetTitle className="flex items-center gap-2 text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
+              <SheetTitle className="flex items-center gap-2 font-normal text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
                 <Star />
                 <span>Favourites</span>
               </SheetTitle>
             {/* </Link> */}
             <Link onClick={() => setOpen(false)} href="/settings">
-              <SheetTitle className="flex items-center gap-2 text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
+              <SheetTitle className="flex items-center gap-2 font-normal text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
                 <Settings />
                 <span>Settings</span>
               </SheetTitle>

@@ -12,7 +12,7 @@ export const UsersTable = pgTable("users", {
   username: varchar("username", { length: 128 }).notNull(),
   email: varchar("email", { length: 256 }).notNull().unique(),
   age: integer("age").notNull(),
-  hashedPassword: varchar("hashed_password", { length: 100 }).notNull(),
+  hashedPassword: varchar("hashed_password").notNull(),
   role: UserRole().default("user").notNull(),
   registeredAt: timestamp("registered_at").defaultNow(),
 });
