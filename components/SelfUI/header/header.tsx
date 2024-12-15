@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { DarkThemeTextLogo } from "../logo/landlord-logo";
-import { NewPostButton } from "../button/button";
+import { LinkButton } from "../button/button";
 import UserMenu from "../user-menu/user-menu";
 import GeolocationComponent from "../geolocation/geolocation";
 import { Bell } from "lucide-react";
@@ -42,10 +42,10 @@ export default function Header({
               <GeolocationComponent />
             </div>
             <div className="hidden md:block">
-              <NewPostButton url="/create">
+              <LinkButton url="/create">
                 <span className="block min-[832px]:hidden">New</span>
                 <span className="hidden min-[832px]:block">New post</span>
-              </NewPostButton>
+              </LinkButton>
             </div>
             <div className="hidden md:block">
               <UserMenu />
