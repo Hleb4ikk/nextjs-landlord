@@ -1,6 +1,9 @@
+'use client'
+
 import Link from "next/link";
 import React from "react";
-
+import { Button } from "@/components/ui/button";
+import { useFormStatus } from "react-dom";
 interface ButtonProps {
   className?: string;
   url: string;
@@ -51,4 +54,18 @@ const LinkButton = ({ className, url, children }: ButtonProps) => {
     </div>
   );
 };
-export { HomePageButton, LinkButton };
+const FormButton = () =>{
+  
+  const { pending } = useFormStatus();
+
+  return (
+    <Button
+      aria-disabled={pending}
+      type="submit"
+      className= "mt-2 w-full w-[10em] bg-[#393939] border-[#393939] border-[2px] hover:bg-[#393939]/20 active:bg-[#303030]/0"
+    >
+      {pending ? "Submitting..." : "Sign Up"}
+    </Button>
+  );
+}
+export { HomePageButton, LinkButton, FormButton };
