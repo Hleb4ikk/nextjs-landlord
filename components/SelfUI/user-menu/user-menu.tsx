@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import {
   Sheet,
@@ -21,12 +21,13 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-export default function UserMenu() {
+export default function UserMenu({ user }: { user? }) {
+  console.log("UserMenu: " + user?.username);
+  const [open, setOpen] = useState(false);
 
- const [open, setOpen] = useState(false);
   return (
     <div className="">
-      <Sheet open = {open} onOpenChange={setOpen}>
+      <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger>
           <Avatar>
             <AvatarImage src="" />
@@ -36,7 +37,7 @@ export default function UserMenu() {
         <SheetContent className="bg-[#222222] border-none">
           <SheetHeader>
             <SheetTitle className="grid grid-cols-2 pt-4 items-center text-white">
-              <h1 justify-self-start>My Account Name</h1>
+              <h1 justify-self-start>{user?.username}</h1>
               <div className="pr-3">
                 <Avatar className="justify-self-end">
                   <AvatarImage src="" />
@@ -58,16 +59,16 @@ export default function UserMenu() {
               </SheetTitle>
             </Link>
             {/* <Link href="/profile"> */}
-              <SheetTitle className="flex items-center gap-2 font-normal text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
-                <Bell />
-                <span>Notifications</span>
-              </SheetTitle>
+            <SheetTitle className="flex items-center gap-2 font-normal text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
+              <Bell />
+              <span>Notifications</span>
+            </SheetTitle>
             {/* </Link> */}
             {/* <Link onClick={() => setOpen(false)} href="/favourites"> */}
-              <SheetTitle className="flex items-center gap-2 font-normal text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
-                <Star />
-                <span>Favourites</span>
-              </SheetTitle>
+            <SheetTitle className="flex items-center gap-2 font-normal text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
+              <Star />
+              <span>Favourites</span>
+            </SheetTitle>
             {/* </Link> */}
             <Link onClick={() => setOpen(false)} href="/settings">
               <SheetTitle className="flex items-center gap-2 font-normal text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
@@ -77,10 +78,10 @@ export default function UserMenu() {
             </Link>
             <Separator />
             {/* <Link href="/profile"> */}
-              <SheetTitle className="flex items-center gap-2 text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
-                <LogOut />
-                <span>Sign out</span>
-              </SheetTitle>
+            <SheetTitle className="flex items-center gap-2 text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
+              <LogOut />
+              <span>Sign out</span>
+            </SheetTitle>
             {/* </Link> */}
           </SheetHeader>
         </SheetContent>

@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { DarkThemeTextLogo } from "../logo/landlord-logo";
 import { LinkButton } from "../button/button";
@@ -9,15 +10,18 @@ import { Suspense } from "react";
 
 export default function Header({
   searchParams,
+  user,
 }: {
   searchParams?: {
     query?: string;
     page?: string;
   };
+  user?;
 }) {
   const query = searchParams?.query || "";
   const currentPage = Number(searchParams?.page) || 1;
   console.log(query + currentPage);
+  console.log("Header: " + user?.username);
   return (
     <>
       <header className="w-full sticky items-center pl-3 pr-3 md:pl-10 md:pr-10 pt-3">
@@ -41,15 +45,24 @@ export default function Header({
             <div>
               <GeolocationComponent />
             </div>
-            <div className="hidden md:block">
-              <LinkButton url="/create">
-                <span className="block min-[832px]:hidden">New</span>
-                <span className="hidden min-[832px]:block">New post</span>
+            {user && (
+              <div className="hidden md:block">
+                <LinkButton url="/create">
+                  <span className="block min-[832px]:hidden">New</span>
+                  <span className="hidden min-[832px]:block">New post</span>
+                </LinkButton>
+              </div>
+            )}
+            {user && (
+              <div className="hidden md:block">
+                <UserMenu user={user} />
+              </div>
+            )}
+            {!user && (
+              <LinkButton url="/registration">
+                <span>Sign Up</span>
               </LinkButton>
-            </div>
-            <div className="hidden md:block">
-              <UserMenu />
-            </div>
+            )}
             <button className="block md:hidden">
               <Bell size={28} />
             </button>

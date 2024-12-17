@@ -71,6 +71,9 @@ export function RegistrationForm() {
                   </ul>
                 </div>
               )}
+              {state?.message && (
+                <p className="text-sm text-red-500">{state.message}</p>
+              )}
               <div className="flex justify-center">
                 <FormButton/>
               </div>

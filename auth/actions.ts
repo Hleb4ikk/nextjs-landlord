@@ -28,7 +28,7 @@ export async function signup(state: FormState, formData: FormData): Promise<Form
     const existingUser = await db.select().from(UsersTable).where(eq(UsersTable.email, email))
     if (existingUser.length != 0) {
         return {
-          message: 'Email already exists, please use a different email or login.',
+            message: 'Email already exists, please use a different email or login.',
         };
     }
 
@@ -36,7 +36,7 @@ export async function signup(state: FormState, formData: FormData): Promise<Form
         .insert(UsersTable)
         .values({username, email, age, hashedPassword: await encode_password(password), role: 'user'})
         .returning({id: UsersTable.id})
-
+    
     const user = data[0]
 
     if (!user) {
