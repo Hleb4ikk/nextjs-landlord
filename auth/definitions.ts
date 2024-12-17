@@ -23,6 +23,13 @@ export const LoginFormSchema = z.object({
   password: z.string().min(1, { message: 'Password field must not be empty.' }),
 });
 
+export type UserDefinition = {
+  
+  username: string;
+  email: string;
+  isAdmin: boolean;
+} | null;
+
 export type FormState =
     {
       errors?: {

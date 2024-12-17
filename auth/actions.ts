@@ -1,12 +1,12 @@
 'use server'
 
 import { db } from "@/drizzle/db"
-import { SignupFormSchema } from "./definitions"
+import { LoginFormSchema, SignupFormSchema } from "./definitions"
 import { FormState } from "@/auth/definitions"
-import { encode_password } from "@/lib/hash"
+import { compare_hash_and_password, encode_password } from "@/lib/hash"
 import { UsersTable } from "@/drizzle/schemas/users"
 import { eq } from "drizzle-orm"
-import { createSession } from "./stateless-session"
+import { createSession, deleteSession } from "./stateless-session"
 
 export async function signup(state: FormState, formData: FormData): Promise<FormState>{
     
@@ -47,4 +47,52 @@ export async function signup(state: FormState, formData: FormData): Promise<Form
     const userId = user.id;
 
     await createSession(userId);
+}
+
+export async function login(state: FormState, formData: FormData): Promise<FormState>{
+    
+    const validateResult = LoginFormSchema.safeParse({
+        email: formData.get('email'),
+        password: formData.get('password')
+    })
+    
+    if(!validateResult.success){
+        return {
+            errors: validateResult.error.flatten().fieldErrors,
+        }
+    }
+    
+    const {email, password} = validateResult.data
+
+    const UserPassword = await db.select({hashedPassword: UsersTable.hashedPassword}).from(UsersTable).where(eq(UsersTable.email, email))
+    
+    //1. check if user exists
+    if (UserPassword.length == 0) {
+        return {
+            message: 'User not exists, please use a different email or login',
+        };
+    }
+    //2. check if password is correct
+    if (!(await compare_hash_and_password(password, UserPassword[0].hashedPassword))){
+
+        return {
+            message: 'Password is incorrect, please use a different password',
+        }
+
+    }
+    //3. try to get user data
+    const user = (await db.select().from(UsersTable).where(eq(UsersTable.email, email)))[0];
+    
+    //4. check if user was correctly found
+    if (!user) {
+        return {
+          message: 'An error occurred while login processed.',
+        };
+    }
+
+    const userId = user.id;
+    await createSession(userId);
+}
+export async function logout() {
+    deleteSession();
 }

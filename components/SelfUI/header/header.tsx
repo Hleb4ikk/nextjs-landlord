@@ -7,6 +7,7 @@ import GeolocationComponent from "../geolocation/geolocation";
 import { Bell } from "lucide-react";
 import Search from "../search";
 import { Suspense } from "react";
+import { UserDefinition } from "@/auth/definitions";
 
 export default function Header({
   searchParams,
@@ -16,7 +17,7 @@ export default function Header({
     query?: string;
     page?: string;
   };
-  user?;
+  user? : UserDefinition;
 }) {
   const query = searchParams?.query || "";
   const currentPage = Number(searchParams?.page) || 1;
@@ -59,8 +60,8 @@ export default function Header({
               </div>
             )}
             {!user && (
-              <LinkButton url="/registration">
-                <span>Sign Up</span>
+              <LinkButton url="/login">
+                <span>Sign In</span>
               </LinkButton>
             )}
             <button className="block md:hidden">

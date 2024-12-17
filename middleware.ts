@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { decrypt } from '@/auth/stateless-session';
+import { decrypt, updateSession } from '@/auth/stateless-session';
 import { cookies } from 'next/headers';
 
 // 1. Specify protected and public routes
@@ -7,6 +7,7 @@ const protectedRoutes = ['/profile', '/create', '/messages', '/settings'];
 const publicRoutes = ['/login', '/registration', '/catalog', '/'];
 
 export default async function middleware(req: NextRequest) {
+  
   // 2. Check if the current route is protected or public
   const path = req.nextUrl.pathname;
   const isProtectedRoute = protectedRoutes.includes(path);
@@ -29,5 +30,13 @@ export default async function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL('/catalog', req.nextUrl));
   }
 
+  //5. Update session
+  const response = await updateSession(req);
+
+  if(response){
+    console.log("Update session");
+    return response;
+  }
+  
   return NextResponse.next();
 }

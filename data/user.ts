@@ -6,6 +6,7 @@ import { eq } from "drizzle-orm";
 import { cache } from "react";
 
 export const getUser = cache(async () => {
+  
   const session = await verifySession();
   if (!session) return null;
 
@@ -22,7 +23,7 @@ export const getUser = cache(async () => {
       email: user.email,
       isAdmin: user.role === "admin",
     };
-  } catch (error) {
+  } catch {
     console.log("Failed to fetch user");
     return null;
   }

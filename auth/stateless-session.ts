@@ -4,6 +4,7 @@ import type { SessionPayload } from "@/auth/definitions";
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { NextRequest, NextResponse } from 'next/server';
 
 const secretKey = process.env.SECRET;
 const key = new TextEncoder().encode(secretKey);
@@ -22,7 +23,7 @@ export async function decrypt(session: string | undefined = "") {
       algorithms: ["HS256"],
     });
     return payload;
-  } catch (error) {
+  } catch {
     return null;
   }
 }
@@ -53,25 +54,50 @@ export async function verifySession() {
   return { isAuth: true, userId: String(session.userId) };
 }
 
-export async function updateSession() {
-  const session = cookies().get("session")?.value;
-  const payload = await decrypt(session);
+// export async function updateSession() {
+//   const session = cookies().get("session")?.value;
+//   const payload = await decrypt(session);
 
-  if (!session || !payload) {
-    return null;
+//   if (!session || !payload) {
+//     return null;
+//   }
+
+//   const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+//   cookies().set("session", session, {
+//     httpOnly: true,
+//     secure: true,
+//     expires: expires,
+//     sameSite: "lax",
+//     path: "/",
+//   });
+// }
+
+export async function updateSession(request: NextRequest) {
+  const session = request.cookies.get('session')?.value;
+
+  if (session) {
+    // Расшифровываем сессию (если нужно)
+    const payload = await decrypt(session);
+
+    if (payload) {
+      
+      // Устанавливаем новый срок действия сессии
+      const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+
+      // Создаем новый ответ с обновленной кукой
+      const response = NextResponse.next();
+      response.cookies.set('session', session, {
+        httpOnly: true,
+        secure: true,
+        expires: expires,
+        sameSite: 'lax',
+        path: '/',
+      });
+
+      return response;
+    }
   }
-
-  const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
-  cookies().set("session", session, {
-    httpOnly: true,
-    secure: true,
-    expires: expires,
-    sameSite: "lax",
-    path: "/",
-  });
 }
-
 export function deleteSession() {
   cookies().delete("session");
-  redirect("/login");
 }

@@ -54,7 +54,7 @@ const LinkButton = ({ className, url, children }: ButtonProps) => {
     </div>
   );
 };
-const FormButton = () =>{
+const FormButton = ({buttonText} : {buttonText: string}) => {
   
   const { pending } = useFormStatus();
 
@@ -64,7 +64,7 @@ const FormButton = () =>{
       type="submit"
       className= "mt-2 w-full w-[10em] bg-[#393939] border-[#393939] border-[2px] hover:bg-[#393939]/20 active:bg-[#303030]/0"
     >
-      {pending ? "Submitting..." : "Sign Up"}
+      {pending ? "Submitting..." : buttonText}
     </Button>
   );
 }

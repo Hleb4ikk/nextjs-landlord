@@ -20,8 +20,10 @@ import {
   Star,
 } from "lucide-react";
 import Link from "next/link";
+import { UserDefinition } from "@/auth/definitions";
+import { logout } from "@/auth/actions";
 
-export default function UserMenu({ user }: { user? }) {
+export default function UserMenu({ user }: { user?: UserDefinition }) {
   console.log("UserMenu: " + user?.username);
   const [open, setOpen] = useState(false);
 
@@ -78,10 +80,17 @@ export default function UserMenu({ user }: { user? }) {
             </Link>
             <Separator />
             {/* <Link href="/profile"> */}
-            <SheetTitle className="flex items-center gap-2 text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
-              <LogOut />
-              <span>Sign out</span>
-            </SheetTitle>
+            <button
+              onClick={() => {
+                setOpen(false);
+                logout(); 
+              }}
+            >
+              <SheetTitle className="flex items-center gap-2 text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
+                <LogOut />
+                <span>Sign out</span>
+              </SheetTitle>
+            </button>
             {/* </Link> */}
           </SheetHeader>
         </SheetContent>

@@ -3,10 +3,10 @@ import Header from "../../components/SelfUI/header/header";
 import Footer from "@/components/SelfUI/footer/footer"
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
-
+  
   const user = await getUser();
 
-  console.log("lAYOUT:" + user?.username);
+  console.log("Layout:" + user?.username);
 
   return (
     <div className="min-h-screen">
