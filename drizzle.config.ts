@@ -7,6 +7,7 @@ export default defineConfig({
     "./drizzle/schemas/advertisements.ts",
     "./drizzle/schemas/ad-images.ts",
     "./drizzle/schemas/user-role.ts",
+    "./drizzle/schemas/followers.ts",
   ],
   dialect: "postgresql",
   dbCredentials: {
