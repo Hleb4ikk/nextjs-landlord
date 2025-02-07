@@ -38,5 +38,5 @@ export default async function middleware(req: NextRequest) {
     return response;
   }
   
-  return NextResponse.next();
+  return response;
 }

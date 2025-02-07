@@ -8,7 +8,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import AvatarImg from "../avatar/avatar-img";
 import { useState } from "react";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -24,27 +24,20 @@ import { UserDefinition } from "@/auth/definitions";
 import { logout } from "@/auth/actions";
 
 export default function UserMenu({ user }: { user?: UserDefinition }) {
-  console.log("UserMenu: " + user?.username);
   const [open, setOpen] = useState(false);
 
   return (
     <div className="">
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger>
-          <Avatar>
-            <AvatarImage src="" />
-            <AvatarFallback>sn</AvatarFallback>
-          </Avatar>
+          <AvatarImg/>
         </SheetTrigger>
         <SheetContent className="bg-[#222222] border-none">
           <SheetHeader>
             <SheetTitle className="grid grid-cols-2 pt-4 items-center text-white">
               <h1 justify-self-start>{user?.username}</h1>
               <div className="pr-3">
-                <Avatar className="justify-self-end">
-                  <AvatarImage src="" />
-                  <AvatarFallback>sn</AvatarFallback>
-                </Avatar>
+                <AvatarImg className="justify-self-end"/>
               </div>
             </SheetTitle>
             <Separator />

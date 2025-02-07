@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import { DarkThemeTextLogo } from "../logo/landlord-logo";
 import { LinkButton } from "../button/button";
@@ -7,22 +8,22 @@ import GeolocationComponent from "../geolocation/geolocation";
 import { Bell } from "lucide-react";
 import Search from "../search";
 import { Suspense } from "react";
-import { UserDefinition } from "@/auth/definitions";
+import { useUser } from "@/contexts/user/user-context";
 
 export default function Header({
   searchParams,
-  user,
 }: {
   searchParams?: {
     query?: string;
     page?: string;
   };
-  user? : UserDefinition;
 }) {
   const query = searchParams?.query || "";
   const currentPage = Number(searchParams?.page) || 1;
   console.log(query + currentPage);
-  console.log("Header: " + user?.username);
+
+  const user = useUser();
+  
   return (
     <>
       <header className="w-full sticky items-center pl-3 pr-3 md:pl-10 md:pr-10 pt-3">

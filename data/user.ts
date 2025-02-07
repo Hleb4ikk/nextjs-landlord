@@ -1,4 +1,5 @@
-import "server-only";
+"use server";
+
 import { verifySession } from "@/auth/stateless-session";
 import { db } from "@/drizzle/db";
 import { UsersTable } from "@/drizzle/schemas/users";
