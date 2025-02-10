@@ -23,21 +23,21 @@ import Link from "next/link";
 import { UserDefinition } from "@/auth/definitions";
 import { logout } from "@/auth/actions";
 
-export default function UserMenu({ user }: { user?: UserDefinition }) {
+export default function UserMenu({ user }: { user: UserDefinition }) {
   const [open, setOpen] = useState(false);
 
   return (
     <div className="">
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger>
-          <AvatarImg/>
+          <AvatarImg username = {user?.username}/>
         </SheetTrigger>
         <SheetContent className="bg-[#222222] border-none">
           <SheetHeader>
             <SheetTitle className="grid grid-cols-2 pt-4 items-center text-white">
-              <h1 justify-self-start>{user?.username}</h1>
+              <h1 justify-self-start>{user.username}</h1>
               <div className="pr-3">
-                <AvatarImg className="justify-self-end"/>
+                <AvatarImg username = {user.username} className="justify-self-end"/>
               </div>
             </SheetTitle>
             <Separator />

@@ -1,26 +1,57 @@
-"use client";
-
-import { useUser } from "@/contexts/user/user-context";
 import AvatarImg from "@/components/SelfUI/avatar/avatar-img";
 import { LinkButton } from "@/components/SelfUI/button/button";
 import { notFound } from "next/navigation";
+import { fetchGeneralUserDataByUsername } from "@/data/user";
+import { verifySession } from "@/auth/stateless-session";
+import { getSessionUser } from "@/data/user";
+import Link from "next/link";
 
-export default function Profile({ params }: { params: { profileIndex: string } }) {
-  const user = useUser();
+export default async function Profile({
+  params,
+}: {
+  params: { profileIndex: string };
+}) {
+  let profile = await fetchGeneralUserDataByUsername(params.profileIndex);
 
-  const isAccountOwner = user?.username === params?.profileIndex;
+  if (!profile) notFound();
 
-  //notFound();
+  const verifiedUser = await verifySession();
+
+  const isAccountOwner = verifiedUser?.userId === profile.id;
+
+  if (isAccountOwner) profile = await getSessionUser();
+
+  if (!profile)
+    return (
+      <main className="absolute inset-0 flex justify-center items-center">
+        <div className="">
+          <h1 className="text-8xl font-bold">404</h1>
+          <p className="text-3xl">
+            Profile{" "}
+            <span className="font-semibold">{params?.profileIndex}</span> not
+            found.
+          </p>
+          <Link href="/catalog">Go to catalog</Link>
+        </div>
+      </main>
+    );
+
   return (
     <div className="flex flex-col gap-6 md:grid md:grid-cols-5 md:gap-5">
       <div className="grid grid-cols-3 gap-2 md:flex md:flex-col md:gap-2 md:col-span-2">
-        <AvatarImg className="w-[30vw] h-[30vw] max-h-40 max-w-40 text-[40px] md:size-40 md:text-[50px] lg:max-h-80 lg:max-w-80 lg:size-80 lg:text-[100px]" />
+        <AvatarImg
+          username={profile.username}
+          className="w-[30vw] h-[30vw] max-h-40 max-w-40 text-[40px] md:size-40 md:text-[50px] lg:max-h-80 lg:max-w-80 lg:size-80 lg:text-[100px]"
+        />
         <div className="flex flex-col gap-2 col-span-2">
           <h1 className="text-lg md:text-3xl md:font-semibold">
-            {user?.username}
+            {profile?.username}
           </h1>
           <div className="flex gap-2 max-w-full">
             <p>0 advertisements</p> <p>1 follower</p> <p>1 following</p>
+          </div>
+          <div>
+            On landlord from {profile?.registeredAt?.toLocaleDateString()}
           </div>
           {isAccountOwner && (
             <LinkButton url="/catalog">Edit Profile</LinkButton>
