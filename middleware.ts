@@ -3,7 +3,7 @@ import { decrypt, updateSession } from '@/auth/stateless-session';
 import { cookies } from 'next/headers';
 
 // 1. Specify protected and public routes
-const protectedRoutes = ['/profile', '/create', '/messages', '/settings'];
+const protectedRoutes = ['/create', '/messages', '/settings'];
 const publicRoutes = ['/login', '/registration', '/catalog', '/'];
 
 export default async function middleware(req: NextRequest) {

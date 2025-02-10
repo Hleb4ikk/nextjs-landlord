@@ -41,7 +41,7 @@ export default function UserMenu({ user }: { user?: UserDefinition }) {
               </div>
             </SheetTitle>
             <Separator />
-            <Link onClick={() => setOpen(false)} href="/profile">
+            <Link onClick={() => setOpen(false)} href={"/" + user?.username}>
               <SheetTitle className="flex items-center gap-2 font-normal text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">
                 <User />
                 <span>Profile</span>

@@ -6,7 +6,7 @@ import { UsersTable } from "@/drizzle/schemas/users";
 import { eq } from "drizzle-orm";
 import { cache } from "react";
 
-export const getUser = cache(async () => {
+export const getSessionUser = cache(async () => {
   
   const session = await verifySession();
   if (!session) return null;
@@ -29,3 +29,19 @@ export const getUser = cache(async () => {
     return null;
   }
 });
+
+export const fetchGeneralUserData = cache(async (username: string) => {
+
+  try {
+    const data = await db.select({username: UsersTable.username, email: UsersTable.email, registeredAt: UsersTable.registeredAt}).from(UsersTable).where(eq(UsersTable.username, username))
+  
+    if(data.length == 0) return null;
+    
+    return data[0];
+  }
+  catch {
+    console.log("Failed to fetch general user data");
+    return null
+  }
+
+})
