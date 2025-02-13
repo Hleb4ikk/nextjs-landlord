@@ -1,6 +1,6 @@
-import Image from "next/image";
-import darkThemeLogo from "@/public/logo/LandLordLogoDarkTheme.svg";
-import { playFair } from "../fonts";
+import Image from 'next/image';
+import darkThemeLogo from '@/public/logo/LandLordLogoDarkTheme.svg';
+import { playFair } from '../fonts';
 interface LogoProps {
   className?: string;
 }

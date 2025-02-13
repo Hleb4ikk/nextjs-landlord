@@ -1,10 +1,10 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import { House, Star, CirclePlus, MessageCircle, User } from "lucide-react";
+import { House, Star, CirclePlus, MessageCircle, User } from 'lucide-react';
 
 const MobileBottomMenu = () => {
   return (
-    <footer className="fixed w-[100vw] pt-3 pb-3 flex justify-center gap-[14vw] bottom-0 border-t border-white">
+    <footer className="fixed bottom-0 flex w-[100vw] justify-center gap-[14vw] border-t border-white pb-3 pt-3">
       {/* links for mobileBottomMenu */}
       <Link href="/catalog">
         <House size={28} />

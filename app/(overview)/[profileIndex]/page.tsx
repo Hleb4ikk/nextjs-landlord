@@ -1,16 +1,12 @@
-import AvatarImg from "@/components/SelfUI/avatar/avatar-img";
-import { LinkButton } from "@/components/SelfUI/button/button";
-import { notFound } from "next/navigation";
-import { fetchGeneralUserDataByUsername } from "@/data/user";
-import { verifySession } from "@/auth/stateless-session";
-import { getSessionUser } from "@/data/user";
-import Link from "next/link";
+import AvatarImg from '@/components/SelfUI/avatar/avatar-img';
+import { LinkButton } from '@/components/SelfUI/button/button';
+import { notFound } from 'next/navigation';
+import { fetchGeneralUserDataByUsername } from '@/data/user';
+import { verifySession } from '@/auth/stateless-session';
+import { getSessionUser } from '@/data/user';
+import Link from 'next/link';
 
-export default async function Profile({
-  params,
-}: {
-  params: { profileIndex: string };
-}) {
+export default async function Profile({ params }: { params: { profileIndex: string } }) {
   let profile = await fetchGeneralUserDataByUsername(params.profileIndex);
 
   if (!profile) notFound();
@@ -23,13 +19,11 @@ export default async function Profile({
 
   if (!profile)
     return (
-      <main className="absolute inset-0 flex justify-center items-center">
+      <main className="absolute inset-0 flex items-center justify-center">
         <div className="">
           <h1 className="text-8xl font-bold">404</h1>
           <p className="text-3xl">
-            Profile{" "}
-            <span className="font-semibold">{params?.profileIndex}</span> not
-            found.
+            Profile <span className="font-semibold">{params?.profileIndex}</span> not found.
           </p>
           <Link href="/catalog">Go to catalog</Link>
         </div>
@@ -38,28 +32,22 @@ export default async function Profile({
 
   return (
     <div className="flex flex-col gap-6 md:grid md:grid-cols-5 md:gap-5">
-      <div className="grid grid-cols-3 gap-2 md:flex md:flex-col md:gap-2 md:col-span-2">
+      <div className="grid grid-cols-3 gap-2 md:col-span-2 md:flex md:flex-col md:gap-2">
         <AvatarImg
           username={profile.username}
-          className="w-[30vw] h-[30vw] max-h-40 max-w-40 text-[40px] md:size-40 md:text-[50px] lg:max-h-80 lg:max-w-80 lg:size-80 lg:text-[100px]"
+          className="h-[30vw] max-h-40 w-[30vw] max-w-40 text-[40px] md:size-40 md:text-[50px] lg:size-80 lg:max-h-80 lg:max-w-80 lg:text-[100px]"
         />
-        <div className="flex flex-col gap-2 col-span-2">
-          <h1 className="text-lg md:text-3xl md:font-semibold">
-            {profile?.username}
-          </h1>
-          <div className="flex gap-2 max-w-full">
+        <div className="col-span-2 flex flex-col gap-2">
+          <h1 className="text-lg md:text-3xl md:font-semibold">{profile?.username}</h1>
+          <div className="flex max-w-full gap-2">
             <p>0 advertisements</p> <p>1 follower</p> <p>1 following</p>
           </div>
-          <div>
-            On landlord from {profile?.registeredAt?.toLocaleDateString()}
-          </div>
-          {isAccountOwner && (
-            <LinkButton url="/catalog">Edit Profile</LinkButton>
-          )}
+          <div>On landlord from {profile?.registeredAt?.toLocaleDateString()}</div>
+          {isAccountOwner && <LinkButton url="/catalog">Edit Profile</LinkButton>}
         </div>
       </div>
       <div className="md:col-span-3">
-        <h1 className="font-bold text-3xl">Your Advertisements:</h1>
+        <h1 className="text-3xl font-bold">Your Advertisements:</h1>
       </div>
     </div>
   );

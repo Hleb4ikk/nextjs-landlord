@@ -1,22 +1,16 @@
-import { UserProvider } from "@/contexts/user/user-context";
-import Header from "../../components/SelfUI/header/header";
-import Footer from "@/components/SelfUI/footer/footer";
-import { getSessionUser } from "@/data/user";
+import { UserProvider } from '@/contexts/user/user-context';
+import Header from '../../components/SelfUI/header/header';
+import Footer from '@/components/SelfUI/footer/footer';
+import { getSessionUser } from '@/data/user';
 
-export default async function Layout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function Layout({ children }: { children: React.ReactNode }) {
   const user = await getSessionUser();
 
   return (
-    <main className="">
+    <main>
       <UserProvider user={user}>
-        <Header/>
-        <div className="max-w-[1440px] mr-auto ml-auto mt-10 pr-3 pl-3 md:pl-10 md:pr-10">
-          {children}
-        </div>
+        <Header />
+        <div className="h-screen">{children}</div>
         <Footer />
       </UserProvider>
     </main>
