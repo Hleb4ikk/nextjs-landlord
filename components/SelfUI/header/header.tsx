@@ -62,7 +62,7 @@ export default function Header({
             )}
             {!user && (
               <LinkButton url="/login">
-                <span>Sign In</span>
+                Sign In
               </LinkButton>
             )}
             <button className="block md:hidden">

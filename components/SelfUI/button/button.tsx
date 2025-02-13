@@ -34,24 +34,11 @@ const HomePageButton = ({ className, url, children }: ButtonProps) => {
 
 const LinkButton = ({ className, url, children }: ButtonProps) => {
   return (
-    <div>
-      <Link href={url}>
-        <button
-          className={
-            "relative inline-flex items-center justify-center p-0.5 overflow-hidden " +
-            "font-medium text-white rounded-lg group bg-[#363636] " +
-            className
-          }
-        >
-          <span
-            className="w-full relative px-5 py-2.5 transition-all ease-in duration-75 bg-[#1e1e1e] 
-      rounded-md group-hover:bg-opacity-0 group-active:bg-opacity-100"
-          >
-            {children}
-          </span>
-        </button>
-      </Link>
-    </div>
+      <Button asChild className={className}>
+        <Link href={url}>
+          {children}
+        </Link>
+      </Button>
   );
 };
 const FormButton = ({buttonText} : {buttonText: string}) => {
