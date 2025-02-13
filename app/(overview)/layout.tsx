@@ -1,14 +1,18 @@
-'use client'
+import { UserProvider } from '@/contexts/user/user-context';
+import Header from '../../components/SelfUI/header/header';
+import Footer from '@/components/SelfUI/footer/footer';
+import { getSessionUser } from '@/data/user';
 
-import Header from "../../components/SelfUI/header/header";
-import Footer from "@/components/SelfUI/footer/footer"
+export default async function Layout({ children }: { children: React.ReactNode }) {
+  const user = await getSessionUser();
 
-export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen">
-      <Header/>
-        <div className="pr-3 pl-3 md:pl-10 md:pr-10">{children}</div>
-      <Footer/> 
-    </div>
+    <main>
+      <UserProvider user={user}>
+        <Header />
+        <div className="h-screen">{children}</div>
+        <Footer />
+      </UserProvider>
+    </main>
   );
 }

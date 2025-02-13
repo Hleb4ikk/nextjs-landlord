@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import { Input } from "@/components/ui/input";
-import { usePathname, useSearchParams } from "next/navigation";
-import { useRouter } from "next/navigation";
-import { useDebouncedCallback } from "use-debounce";
+import { Input } from '@/components/ui/input';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+import { useDebouncedCallback } from 'use-debounce';
 interface SearchProps {
   className?: string;
   placeholder: string;
@@ -19,9 +19,9 @@ export default function Search({ className, placeholder }: SearchProps) {
 
     const params = new URLSearchParams(searchParams);
     if (term) {
-      params.set("query", term);
+      params.set('query', term);
     } else {
-      params.delete("query");
+      params.delete('query');
     }
     replace(`${pathname}?${params.toString()}`);
     // console.log(term);
@@ -32,7 +32,7 @@ export default function Search({ className, placeholder }: SearchProps) {
       className={className}
       placeholder={placeholder}
       onChange={(e) => handleSearch(e.target.value)}
-      defaultValue={searchParams.get("query")?.toString()}
+      defaultValue={searchParams.get('query')?.toString()}
     />
   );
 }

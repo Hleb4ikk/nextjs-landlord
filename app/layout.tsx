@@ -1,14 +1,14 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import { rethinkSans } from "../components/SelfUI/fonts";
+import type { Metadata } from 'next';
+import './globals.css';
+import { rethinkSans } from '../components/SelfUI/fonts';
 
 export const metadata: Metadata = {
-  title: { 
+  title: {
     template: '%s | LandLord',
-    default: 'LandLord'
+    default: 'LandLord',
   },
-  
-  description: "The official LandLord website.",
+
+  description: 'The official LandLord website.',
 };
 
 export default function RootLayout({
@@ -18,11 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${rethinkSans.className} antialiased`}
-      >
-        {children}
-      </body>
+      <body className={`${rethinkSans.className} antialiased`}>{children}</body>
     </html>
   );
 }

@@ -9,16 +9,7 @@ interface VideoProps {
   loop?: boolean;
 }
 
-export function Video({
-  width,
-  height,
-  src,
-  type,
-  className,
-  muted,
-  autoPlay,
-  loop,
-}: VideoProps) {
+export function Video({ width, height, src, type, className, muted, autoPlay, loop }: VideoProps) {
   return (
     <video
       className={className}

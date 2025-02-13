@@ -1,0 +1,5 @@
+[
+  { "id": "users", "position": { "x": 0, "y": 0 } },
+  { "id": "advertisements", "position": { "x": 450, "y": 30 } },
+  { "id": "ad-images", "position": { "x": 900, "y": 90 } }
+]
