@@ -1,26 +1,22 @@
-import "server-only";
+import 'server-only';
 
-import type { SessionPayload } from "@/auth/definitions";
-import { SignJWT, jwtVerify } from "jose";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+import type { SessionPayload } from '@/auth/definitions';
+import { SignJWT, jwtVerify } from 'jose';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 import { NextRequest, NextResponse } from 'next/server';
 
 const secretKey = process.env.SECRET;
 const key = new TextEncoder().encode(secretKey);
 
 export async function encrypt(payload: SessionPayload) {
-  return new SignJWT(payload)
-    .setProtectedHeader({ alg: "HS256" })
-    .setIssuedAt()
-    .setExpirationTime("1hr")
-    .sign(key);
+  return new SignJWT(payload).setProtectedHeader({ alg: 'HS256' }).setIssuedAt().setExpirationTime('1hr').sign(key);
 }
 
-export async function decrypt(session: string | undefined = "") {
+export async function decrypt(session: string | undefined = '') {
   try {
     const { payload } = await jwtVerify(session, key, {
-      algorithms: ["HS256"],
+      algorithms: ['HS256'],
     });
     return payload;
   } catch {
@@ -32,19 +28,19 @@ export async function createSession(userId: string) {
   const expiresAt = new Date(Date.now() + 60 * 60 * 1000);
   const session = await encrypt({ userId, expiresAt });
 
-  cookies().set("session", session, {
+  cookies().set('session', session, {
     httpOnly: true,
     secure: true,
     expires: expiresAt,
-    sameSite: "lax",
-    path: "/",
+    sameSite: 'lax',
+    path: '/',
   });
 
-  redirect("/catalog");
+  redirect('/catalog');
 }
 
 export async function verifySession() {
-  const cookie = cookies().get("session")?.value;
+  const cookie = cookies().get('session')?.value;
   const session = await decrypt(cookie);
 
   if (!session?.userId) {
@@ -80,7 +76,6 @@ export async function updateSession(request: NextRequest) {
     const payload = await decrypt(session);
 
     if (payload) {
-      
       // Устанавливаем новый срок действия сессии
       const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
 
@@ -99,5 +94,5 @@ export async function updateSession(request: NextRequest) {
   }
 }
 export function deleteSession() {
-  cookies().delete("session");
+  cookies().delete('session');
 }

@@ -1,18 +1,18 @@
-import { pgTable, uuid } from "drizzle-orm/pg-core";
-import { UsersTable } from "./users";
-import { primaryKey } from "drizzle-orm/pg-core";
-import { relations } from "drizzle-orm";
+import { pgTable, uuid } from 'drizzle-orm/pg-core';
+import { UsersTable } from './users';
+import { primaryKey } from 'drizzle-orm/pg-core';
+import { relations } from 'drizzle-orm';
 export const FollowersTable = pgTable(
-  "followers",
+  'followers',
   {
-    user_id: uuid("user_id")
+    user_id: uuid('user_id')
       .notNull()
       .references(() => UsersTable.id),
-    follower_id: uuid("follower_id")
+    follower_id: uuid('follower_id')
       .notNull()
       .references(() => UsersTable.id),
   },
-  (table) => [primaryKey({ columns: [table.user_id, table.follower_id] })]
+  (table) => [primaryKey({ columns: [table.user_id, table.follower_id] })],
 );
 
 export const FollowersRelations = relations(FollowersTable, ({ one }) => ({

@@ -7,7 +7,6 @@ const protectedRoutes = ['/create', '/messages', '/settings'];
 const publicRoutes = ['/login', '/registration', '/catalog', '/'];
 
 export default async function middleware(req: NextRequest) {
-  
   // 2. Check if the current route is protected or public
   const path = req.nextUrl.pathname;
   const isProtectedRoute = protectedRoutes.includes(path);
@@ -22,18 +21,14 @@ export default async function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL('/login', req.nextUrl));
   }
 
-  if (
-    isPublicRoute &&
-    session?.userId &&
-    !req.nextUrl.pathname.startsWith('/catalog')
-  ) {
+  if (isPublicRoute && session?.userId && !req.nextUrl.pathname.startsWith('/catalog')) {
     return NextResponse.redirect(new URL('/catalog', req.nextUrl));
   }
 
   //5. Update session
   const response = await updateSession(req);
 
-  if(response){
+  if (response) {
     return response;
   }
 

@@ -1,22 +1,19 @@
-"use server";
+'use server';
 
-import { db } from "@/drizzle/db";
-import { LoginFormSchema, SignupFormSchema } from "./definitions";
-import { FormState } from "@/auth/definitions";
-import { compare_hash_and_password, encode_password } from "@/lib/hash";
-import { UsersTable } from "@/drizzle/schemas/users";
-import { eq, or } from "drizzle-orm";
-import { createSession, deleteSession} from "./stateless-session";
+import { db } from '@/drizzle/db';
+import { LoginFormSchema, SignupFormSchema } from './definitions';
+import { FormState } from '@/auth/definitions';
+import { compare_hash_and_password, encode_password } from '@/lib/hash';
+import { UsersTable } from '@/drizzle/schemas/users';
+import { eq, or } from 'drizzle-orm';
+import { createSession, deleteSession } from './stateless-session';
 
-export async function signup(
-  state: FormState,
-  formData: FormData
-): Promise<FormState> {
+export async function signup(state: FormState, formData: FormData): Promise<FormState> {
   const validateResult = SignupFormSchema.safeParse({
-    username: formData.get("username"),
-    email: formData.get("email"),
-    age: Number(formData.get("age")) || typeof formData.get("age"),
-    password: formData.get("password"),
+    username: formData.get('username'),
+    email: formData.get('email'),
+    age: Number(formData.get('age')) || typeof formData.get('age'),
+    password: formData.get('password'),
   });
 
   if (!validateResult.success) {
@@ -34,7 +31,7 @@ export async function signup(
 
   if (existingUser.length != 0) {
     return {
-      message: "Email or username already exists, please use a different email or username.",
+      message: 'Email or username already exists, please use a different email or username.',
     };
   }
 
@@ -45,7 +42,7 @@ export async function signup(
       email,
       age,
       hashedPassword: await encode_password(password),
-      role: "user",
+      role: 'user',
     })
     .returning({ id: UsersTable.id });
 
@@ -53,7 +50,7 @@ export async function signup(
 
   if (!user) {
     return {
-      message: "An error occurred while creating your account.",
+      message: 'An error occurred while creating your account.',
     };
   }
   const userId = user.id;
@@ -61,13 +58,10 @@ export async function signup(
   await createSession(userId);
 }
 
-export async function login(
-  state: FormState,
-  formData: FormData
-): Promise<FormState> {
+export async function login(state: FormState, formData: FormData): Promise<FormState> {
   const validateResult = LoginFormSchema.safeParse({
-    email: formData.get("email"),
-    password: formData.get("password"),
+    email: formData.get('email'),
+    password: formData.get('password'),
   });
 
   if (!validateResult.success) {
@@ -86,26 +80,22 @@ export async function login(
   //1. check if user exists
   if (UserPassword.length == 0) {
     return {
-      message: "User not exists, please use a different email or login",
+      message: 'User not exists, please use a different email or login',
     };
   }
   //2. check if password is correct
-  if (
-    !(await compare_hash_and_password(password, UserPassword[0].hashedPassword))
-  ) {
+  if (!(await compare_hash_and_password(password, UserPassword[0].hashedPassword))) {
     return {
-      message: "Password is incorrect, please use a different password",
+      message: 'Password is incorrect, please use a different password',
     };
   }
   //3. try to get user data
-  const user = (
-    await db.select().from(UsersTable).where(eq(UsersTable.email, email))
-  )[0];
+  const user = (await db.select().from(UsersTable).where(eq(UsersTable.email, email)))[0];
 
   //4. check if user was correctly found
   if (!user) {
     return {
-      message: "An error occurred while login processed.",
+      message: 'An error occurred while login processed.',
     };
   }
 
