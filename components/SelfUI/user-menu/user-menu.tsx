@@ -22,10 +22,11 @@ import {
 import Link from "next/link";
 import { UserDefinition } from "@/auth/definitions";
 import { logout } from "@/auth/actions";
-
+import { useRouter } from "next/navigation";
 export default function UserMenu({ user }: { user: UserDefinition }) {
   const [open, setOpen] = useState(false);
 
+  const router = useRouter();
   return (
     <div className="">
       <Sheet open={open} onOpenChange={setOpen}>
@@ -77,6 +78,7 @@ export default function UserMenu({ user }: { user: UserDefinition }) {
               onClick={() => {
                 setOpen(false);
                 logout(); 
+                router.refresh();
               }}
             >
               <SheetTitle className="flex items-center gap-2 text-white pl-2 pt-1 pb-1 rounded-md border-white hover:bg-[#363636]">

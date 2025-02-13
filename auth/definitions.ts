@@ -4,6 +4,7 @@ export const SignupFormSchema = z.object({
   username: z
     .string()
     .min(2, { message: "Name must be at least 2 characters long." })
+    .regex(/^[a-zA-Z0-9_]+$/, {message: "Username allows only letters, numbers and underscores "})
     .trim(),
   email: z.string().email({ message: "Please enter a valid email." }).trim(),
   age: z

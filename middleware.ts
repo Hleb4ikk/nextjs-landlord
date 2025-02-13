@@ -34,9 +34,8 @@ export default async function middleware(req: NextRequest) {
   const response = await updateSession(req);
 
   if(response){
-    console.log("Update session");
     return response;
   }
-  
+
   return response;
 }
