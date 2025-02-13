@@ -1,5 +1,5 @@
 import AvatarImg from '@/components/SelfUI/avatar/avatar-img';
-import { LinkButton } from '@/components/SelfUI/button/button';
+import { LinkButton } from '@/components/SelfUI/buttons/button';
 import { notFound } from 'next/navigation';
 import { fetchGeneralUserDataByUsername } from '@/data/user';
 import { verifySession } from '@/auth/stateless-session';

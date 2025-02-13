@@ -1,6 +1,6 @@
 //new branch
 import { DarkThemeLogo } from '@/components/SelfUI/logo/landlord-logo';
-import { HomePageButton } from '../components/SelfUI/button/button';
+import { HomePageButton } from '../components/SelfUI/buttons/button';
 import { Video } from '../components/SelfUI/video';
 import { MoveUpRight } from 'lucide-react';
 export default function Home() {

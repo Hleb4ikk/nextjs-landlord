@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { DarkThemeTextLogo } from '../logo/landlord-logo';
-import { LinkButton } from '../button/button';
+import { LinkButton } from '../buttons/button';
 import UserMenu from '../user-menu/user-menu';
 import GeolocationComponent from '../geolocation/geolocation';
 import { Bell } from 'lucide-react';

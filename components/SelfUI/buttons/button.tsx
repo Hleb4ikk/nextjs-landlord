@@ -36,7 +36,7 @@ const LinkButton = ({ className, url, children }: ButtonProps) => {
     </Button>
   );
 };
-const FormButton = ({ buttonText }: { buttonText: string }) => {
+const SubmitButton = ({ children }: { children: React.ReactNode }) => {
   const { pending } = useFormStatus();
 
   return (
@@ -45,8 +45,8 @@ const FormButton = ({ buttonText }: { buttonText: string }) => {
       type="submit"
       className="mt-2 w-[10em] w-full border-[2px] border-[#393939] bg-[#393939] hover:bg-[#393939]/20 active:bg-[#303030]/0"
     >
-      {pending ? 'Submitting...' : buttonText}
+      {pending ? 'Submitting...' : children}
     </Button>
   );
 };
-export { HomePageButton, LinkButton, FormButton };
+export { HomePageButton, LinkButton, SubmitButton };

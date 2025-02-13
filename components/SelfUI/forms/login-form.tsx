@@ -4,7 +4,7 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { login } from '@/auth/actions';
 import { useFormState } from 'react-dom';
-import { FormButton } from '../button/button';
+import { SubmitButton } from '../buttons/button';
 import { useRouter } from 'next/navigation';
 import { X } from 'lucide-react';
 import Link from 'next/link';
@@ -16,9 +16,9 @@ export function LoginForm() {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
       <div className="relative w-[25em] flex-col gap-2 rounded-xl border-2 border-[#383838] bg-[#222222]">
-        <button onClick={() => router.push('/catalog')} className="absolute right-2 top-2">
+        <Link href={'/catalog'} className="absolute right-2 top-2">
           <X color="grey" size={20} />
-        </button>
+        </Link>
         <div className="p-6">
           <h1 className="mb-4 text-2xl font-bold">Sign In</h1>
           <form action={action}>
@@ -54,7 +54,7 @@ export function LoginForm() {
               )}
               {state?.message && <p className="text-sm text-red-500">{state.message}</p>}
               <div className="flex justify-center">
-                <FormButton buttonText="Sign In" />
+                <SubmitButton>Sign In</SubmitButton>
               </div>
             </div>
           </form>
