@@ -28,7 +28,7 @@ export default function UserMenu({ user }: { user: UserDefinition }) {
       <SheetContent className="border-none bg-[#222222]">
         <SheetHeader>
           <SheetTitle className="grid grid-cols-2 items-center pt-4 text-white">
-            <h1 justify-self-start>{user.username}</h1>
+            <h1>{user.username}</h1>
             <div className="pr-3">
               <AvatarImg username={user.username} className="justify-self-end" />
             </div>

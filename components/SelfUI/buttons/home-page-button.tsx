@@ -2,7 +2,6 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 export const HomePageButton = ({
-  className,
   href,
   children,
 }: {
