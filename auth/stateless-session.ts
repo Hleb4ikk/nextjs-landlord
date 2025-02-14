@@ -35,8 +35,6 @@ export async function createSession(userId: string) {
     sameSite: 'lax',
     path: '/',
   });
-
-  redirect('/catalog');
 }
 
 export async function verifySession() {

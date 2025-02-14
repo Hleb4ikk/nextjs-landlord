@@ -31,10 +31,7 @@ export default function Home() {
               <p className="text-base md:text-xl">Start your search now and find your dream home with Land Lord!</p>
             </div>
             <HomePageButton href="/catalog" className="md:text-xl">
-              To catalog{' '}
-              <span>
-                <MoveUpRight className="inline" size={22} />
-              </span>
+              To catalog <MoveUpRight className="inline" size={22} />
             </HomePageButton>
           </div>
         </div>

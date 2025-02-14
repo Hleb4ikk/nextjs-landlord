@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 export const HomePageButton = ({
+  className,
   href,
   children,
 }: {
@@ -10,7 +11,7 @@ export const HomePageButton = ({
   children?: React.ReactNode;
 }) => {
   return (
-    <Button asChild>
+    <Button size={'lg'} asChild variant={'outline'} className={className + ' bg-opacity-35'}>
       <Link href={href}>{children}</Link>
     </Button>
   );

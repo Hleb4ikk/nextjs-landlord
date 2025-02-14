@@ -9,6 +9,7 @@ import { Bell } from 'lucide-react';
 import Search from '../search';
 import { Suspense } from 'react';
 import { useUser } from '@/contexts/user/user-context';
+import { FormContainer } from '../auth/form-container';
 
 export default function Header({
   searchParams,
@@ -60,7 +61,7 @@ export default function Header({
                 <UserMenu user={user} />
               </div>
             )}
-            {!user && <LinkButton href="/login">Sign In</LinkButton>}
+            {!user && <FormContainer />}
             <button className="block md:hidden">
               <Bell size={28} />
             </button>
