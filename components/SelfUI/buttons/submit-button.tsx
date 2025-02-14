@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button';
 import { useFormStatus } from 'react-dom';
-import React from 'react';
 
 export const SubmitButton = ({ children }: { children: React.ReactNode }) => {
   const { pending } = useFormStatus();
