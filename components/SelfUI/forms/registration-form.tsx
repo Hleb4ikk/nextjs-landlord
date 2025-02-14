@@ -4,7 +4,7 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { signup } from '@/auth/actions';
 import { useFormState } from 'react-dom';
-import { SubmitButton } from '../buttons/button';
+import { SubmitButton } from '../buttons/submit-button';
 import { X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';

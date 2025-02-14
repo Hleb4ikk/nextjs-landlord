@@ -1,5 +1,5 @@
 import AvatarImg from '@/components/SelfUI/avatar/avatar-img';
-import { LinkButton } from '@/components/SelfUI/buttons/button';
+import { LinkButton } from '@/components/SelfUI/buttons/link-button';
 import { notFound } from 'next/navigation';
 import { fetchGeneralUserDataByUsername } from '@/data/user';
 import { verifySession } from '@/auth/stateless-session';
@@ -43,7 +43,11 @@ export default async function Profile({ params }: { params: { profileIndex: stri
             <p>0 advertisements</p> <p>1 follower</p> <p>1 following</p>
           </div>
           <div>On landlord from {profile?.registeredAt?.toLocaleDateString()}</div>
-          {isAccountOwner && <LinkButton url="/catalog">Edit Profile</LinkButton>}
+          {isAccountOwner && (
+            <LinkButton href="/catalog" className="max-w-24">
+              Edit Profile
+            </LinkButton>
+          )}
         </div>
       </div>
       <div className="md:col-span-3">

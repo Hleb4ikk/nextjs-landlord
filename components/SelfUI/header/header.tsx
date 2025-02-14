@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { DarkThemeTextLogo } from '../logo/landlord-logo';
-import { LinkButton } from '../buttons/button';
+import { LinkButton } from '../buttons/link-button';
 import UserMenu from '../user-menu/user-menu';
 import GeolocationComponent from '../geolocation/geolocation';
 import { Bell } from 'lucide-react';
@@ -49,7 +49,7 @@ export default function Header({
             </div>
             {user && (
               <div className="hidden md:block">
-                <LinkButton url="/create">
+                <LinkButton href="/create">
                   <span className="block min-[832px]:hidden">New</span>
                   <span className="hidden min-[832px]:block">New post</span>
                 </LinkButton>
@@ -60,7 +60,7 @@ export default function Header({
                 <UserMenu user={user} />
               </div>
             )}
-            {!user && <LinkButton url="/login">Sign In</LinkButton>}
+            {!user && <LinkButton href="/login">Sign In</LinkButton>}
             <button className="block md:hidden">
               <Bell size={28} />
             </button>

@@ -10,7 +10,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
     <main>
       <UserProvider user={user}>
         <Header />
-        <div className="h-screen">{children}</div>
+        <div className="mx-auto mt-4 max-w-[1440px] px-4">{children}</div>
         <Footer />
       </UserProvider>
     </main>
