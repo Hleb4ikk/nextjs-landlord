@@ -8,6 +8,13 @@
       "when": 1739440168412,
       "tag": "0000_lumpy_namora",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1739530048257,
+      "tag": "0001_smooth_odin",
+      "breakpoints": true
     }
   ]
 }
