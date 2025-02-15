@@ -1,8 +1,13 @@
+'use client';
+
 import Link from 'next/link';
 
 import { House, Star, CirclePlus, MessageCircle, User } from 'lucide-react';
+import { useUser } from '@/contexts/user/user-context';
 
 const MobileBottomMenu = () => {
+  const user = useUser();
+
   return (
     <footer className="fixed bottom-0 flex w-[100vw] justify-center gap-[14vw] border-t border-white pb-3 pt-3">
       {/* links for mobileBottomMenu */}
@@ -18,7 +23,7 @@ const MobileBottomMenu = () => {
       <Link href="/messages">
         <MessageCircle size={28} />
       </Link>
-      <Link href="/profile">
+      <Link href={`/${user?.username}`}>
         <User size={28} />
       </Link>
     </footer>

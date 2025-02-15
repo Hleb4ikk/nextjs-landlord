@@ -9,7 +9,8 @@ import { Bell } from 'lucide-react';
 import Search from '../search';
 import { Suspense } from 'react';
 import { useUser } from '@/contexts/user/user-context';
-import { FormContainer } from '../auth/form-container';
+import { FormContainer } from '../forms/auth-forms/form-container';
+import { usePathname } from 'next/navigation';
 
 export default function Header({
   searchParams,
@@ -22,6 +23,8 @@ export default function Header({
   const query = searchParams?.query || '';
   const currentPage = Number(searchParams?.page) || 1;
   console.log(query + currentPage);
+
+  const path = usePathname();
 
   const user = useUser();
 
@@ -67,14 +70,16 @@ export default function Header({
             </button>
           </div>
         </div>
-        <div className="block pb-1 pt-1 md:hidden">
-          <Suspense>
-            <Search
-              placeholder="Search posts..."
-              className="border-2 border-[#363636] bg-[#1e1e1e] text-white placeholder:text-slate-600 focus-visible:ring-0 focus-visible:ring-offset-0"
-            />
-          </Suspense>
-        </div>
+        {!(path === '/create') && (
+          <div className="block pb-1 pt-1 md:hidden">
+            <Suspense>
+              <Search
+                placeholder="Search posts..."
+                className="border-2 border-[#363636] bg-[#1e1e1e] text-white placeholder:text-slate-600 focus-visible:ring-0 focus-visible:ring-offset-0"
+              />
+            </Suspense>
+          </div>
+        )}
       </header>
     </>
   );

@@ -4,7 +4,7 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { login } from '@/auth/actions';
 import { useFormState } from 'react-dom';
-import { SubmitButton } from '../../buttons/submit-button';
+import { SubmitButton } from '../../../buttons/submit-button';
 import { Button } from '@/components/ui/button';
 
 export function LoginForm({ setHasAccount }: { setHasAccount: (hasAccount: boolean) => void }) {

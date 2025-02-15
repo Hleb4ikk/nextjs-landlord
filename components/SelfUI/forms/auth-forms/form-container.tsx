@@ -19,7 +19,7 @@ import { Button } from '@/components/ui/button';
 import { RegistrationForm } from './forms/registration-form';
 
 export const FormContainer = () => {
-  const [hasAccount, setHasAccount] = useState(false);
+  const [hasAccount, setHasAccount] = useState(true);
 
   return (
     <AlertDialog>
