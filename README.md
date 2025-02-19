@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<p align="center"><img src="./public/logo/LandLordLogoDarkTheme.svg" alt="Logo" width="300" height="300"></p>
+<h1 align="center">Landlord</h1>
+<h4 align="center">A service where you can buy, sell or rent your house.</h4>
 
-## Getting Started
+# Features
 
-First, run the development server:
+- [x] User authentication signup, login, logout.
+- [x] Get user's profile.
+- [x] Get others users profile general information like time of registration, their ads.
+- [x] Create a new advertisements.
+- [x] Search for advertisements.
+- [x] Adaptive design.
+
+# Demo
+
+TBA
+
+# Setup
+
+1. Clone the repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+$ git clone https://github.com/Hleb4ikk/nextjs-landlord
+cd reactjs-landlord
+$ npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Create a `.env` file in the root directory and add the following variables:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+DATABASE_URL="postgresql://postgres:password@adress:port/name_of_db"
+SECRET="Your secret phrase"
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Build
 
-## Learn More
+```bash
+$ npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+Internally that command calls for next to build the project.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Run
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+$ npm run dev
+```
 
-## Deploy on Vercel
+Internally that calls for next to run the project.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Others
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `npm run lint` - Runs eslint on the project.
+- `npm run prettier:check` - Runs prettier on the project.
+- `npm run prettier:fix` - Runs prettier on the project and fixes the errors.
