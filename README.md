@@ -24,7 +24,6 @@ $ git clone https://github.com/Hleb4ikk/nextjs-landlord
 cd reactjs-landlord
 $ npm install
 ```
-
 2. Create a `.env` file in the root directory and add the following variables:
 
 ```
