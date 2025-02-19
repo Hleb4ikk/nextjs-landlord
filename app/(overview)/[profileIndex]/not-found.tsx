@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-
+//TODO: fix scroll
 const NotFound = () => {
   const params = useParams();
   return (
@@ -11,7 +11,10 @@ const NotFound = () => {
         <p className="text-3xl">
           Profile <span className="font-semibold">{params?.profileIndex}</span> not found.
         </p>
-        <Link href="/catalog" className="text-blue-500 hover:underline">
+        <Link
+          href="/catalog"
+          className="text-blue-500 hover:underline"
+        >
           Go to catalog
         </Link>
       </div>

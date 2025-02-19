@@ -8,7 +8,11 @@ interface LogoProps {
 export function DarkThemeLogo({ className }: LogoProps) {
   return (
     <>
-      <Image className={className} src={darkThemeLogo} alt=" DarkTheme Logo" />
+      <Image
+        className={className}
+        src={darkThemeLogo}
+        alt=" DarkTheme Logo"
+      />
     </>
   );
 }

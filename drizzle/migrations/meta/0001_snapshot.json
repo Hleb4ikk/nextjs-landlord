@@ -1,6 +1,6 @@
 {
-  "id": "4e7e01db-f9b9-4d67-801d-1429aa40fbf4",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "f23fa42b-3a63-4b49-93cc-6b52ab6dbef9",
+  "prevId": "4e7e01db-f9b9-4d67-801d-1429aa40fbf4",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -43,7 +43,7 @@
           "name": "avatar_path",
           "type": "varchar(1024)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "role": {
           "name": "role",

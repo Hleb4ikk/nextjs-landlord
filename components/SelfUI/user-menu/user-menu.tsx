@@ -21,26 +21,39 @@ export default function UserMenu({ user }: { user: UserDefinition }) {
 
   const router = useRouter();
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
+    <Sheet
+      open={open}
+      onOpenChange={setOpen}
+    >
       <SheetTrigger>
         <AvatarImg username={user?.username} />
       </SheetTrigger>
       <SheetContent className="border-none bg-[#222222]">
         <SheetHeader>
           <SheetTitle className="grid grid-cols-2 items-center pt-4 text-white">
-            <h1 justify-self-start>{user.username}</h1>
+            <h1>{user.username}</h1>
             <div className="pr-3">
-              <AvatarImg username={user.username} className="justify-self-end" />
+              <AvatarImg
+                username={user.username}
+                urlPath={user.urlPath !== null ? user.urlPath : undefined}
+                className="justify-self-end"
+              />
             </div>
           </SheetTitle>
           <Separator />
-          <Link onClick={() => setOpen(false)} href={'/' + user?.username}>
+          <Link
+            onClick={() => setOpen(false)}
+            href={'/' + user?.username}
+          >
             <SheetTitle className="flex items-center gap-2 rounded-md border-white pb-1 pl-2 pt-1 font-normal text-white hover:bg-[#363636]">
               <User />
               <span>Profile</span>
             </SheetTitle>
           </Link>
-          <Link onClick={() => setOpen(false)} href="/messages">
+          <Link
+            onClick={() => setOpen(false)}
+            href="/messages"
+          >
             <SheetTitle className="flex items-center gap-2 rounded-md border-white pb-1 pl-2 pt-1 font-normal text-white hover:bg-[#363636]">
               <MessageCircle />
               <span>Messages</span>
@@ -58,7 +71,10 @@ export default function UserMenu({ user }: { user: UserDefinition }) {
             <span>Favourites</span>
           </SheetTitle>
           {/* </Link> */}
-          <Link onClick={() => setOpen(false)} href="/settings">
+          <Link
+            onClick={() => setOpen(false)}
+            href="/settings"
+          >
             <SheetTitle className="flex items-center gap-2 rounded-md border-white pb-1 pl-2 pt-1 font-normal text-white hover:bg-[#363636]">
               <Settings />
               <span>Settings</span>

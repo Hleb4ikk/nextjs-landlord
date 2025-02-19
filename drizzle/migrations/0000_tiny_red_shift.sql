@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS "users" (
 	"email" varchar(256) NOT NULL,
 	"age" integer NOT NULL,
 	"hashed_password" varchar NOT NULL,
+	"avatar_path" varchar(1024) NOT NULL,
 	"role" "role" DEFAULT 'user' NOT NULL,
 	"registered_at" timestamp DEFAULT now(),
 	CONSTRAINT "users_email_unique" UNIQUE("email")
@@ -26,12 +27,6 @@ CREATE TABLE IF NOT EXISTS "ad-images" (
 	"added_at" timestamp DEFAULT now()
 );
 --> statement-breakpoint
-CREATE TABLE IF NOT EXISTS "followers" (
-	"user_id" uuid NOT NULL,
-	"follower_id" uuid NOT NULL,
-	CONSTRAINT "followers_user_id_follower_id_pk" PRIMARY KEY("user_id","follower_id")
-);
---> statement-breakpoint
 DO $$ BEGIN
  ALTER TABLE "advertisements" ADD CONSTRAINT "advertisements_author_id_users_user_id_fk" FOREIGN KEY ("author_id") REFERENCES "public"."users"("user_id") ON DELETE no action ON UPDATE no action;
 EXCEPTION
@@ -40,18 +35,6 @@ END $$;
 --> statement-breakpoint
 DO $$ BEGIN
  ALTER TABLE "ad-images" ADD CONSTRAINT "ad-images_advertisement_id_advertisements_advertisement_id_fk" FOREIGN KEY ("advertisement_id") REFERENCES "public"."advertisements"("advertisement_id") ON DELETE no action ON UPDATE no action;
-EXCEPTION
- WHEN duplicate_object THEN null;
-END $$;
---> statement-breakpoint
-DO $$ BEGIN
- ALTER TABLE "followers" ADD CONSTRAINT "followers_user_id_users_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("user_id") ON DELETE no action ON UPDATE no action;
-EXCEPTION
- WHEN duplicate_object THEN null;
-END $$;
---> statement-breakpoint
-DO $$ BEGIN
- ALTER TABLE "followers" ADD CONSTRAINT "followers_follower_id_users_user_id_fk" FOREIGN KEY ("follower_id") REFERENCES "public"."users"("user_id") ON DELETE no action ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;

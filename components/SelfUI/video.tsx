@@ -20,7 +20,10 @@ export function Video({ width, height, src, type, className, muted, autoPlay, lo
       loop={loop}
       preload="none"
     >
-      <source src={src} type={type} />
+      <source
+        src={src}
+        type={type}
+      />
     </video>
   );
 }

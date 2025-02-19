@@ -1,6 +1,6 @@
 //new branch
 import { DarkThemeLogo } from '@/components/SelfUI/logo/landlord-logo';
-import { HomePageButton } from '../components/SelfUI/buttons/button';
+import { HomePageButton } from '@/components/SelfUI/buttons/home-page-button';
 import { Video } from '../components/SelfUI/video';
 import { MoveUpRight } from 'lucide-react';
 export default function Home() {
@@ -30,11 +30,11 @@ export default function Home() {
               </p>
               <p className="text-base md:text-xl">Start your search now and find your dream home with Land Lord!</p>
             </div>
-            <HomePageButton url="/catalog" className="md:text-xl">
-              To catalog{' '}
-              <span>
-                <MoveUpRight className="inline" size={22} />
-              </span>
+            <HomePageButton
+              href="/catalog"
+              className="md:text-xl"
+            >
+              To catalog <MoveUpRight />
             </HomePageButton>
           </div>
         </div>

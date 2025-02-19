@@ -3,7 +3,6 @@ import 'server-only';
 import type { SessionPayload } from '@/auth/definitions';
 import { SignJWT, jwtVerify } from 'jose';
 import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
 import { NextRequest, NextResponse } from 'next/server';
 
 const secretKey = process.env.SECRET;
@@ -35,8 +34,6 @@ export async function createSession(userId: string) {
     sameSite: 'lax',
     path: '/',
   });
-
-  redirect('/catalog');
 }
 
 export async function verifySession() {
