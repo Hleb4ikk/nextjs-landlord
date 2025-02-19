@@ -4,17 +4,17 @@ export const SignupFormSchema = z.object({
   username: z
     .string()
     .min(2, { message: 'Name must be at least 2 characters long.' })
-    .regex(/^[a-zA-Z0-9_]+$/, { message: 'Username allows only letters, numbers and underscores ' })
+    .regex(/^[a-zA-Z0-9_]*$/, { message: 'Username allows only letters, numbers and underscores ' })
     .trim(),
   email: z.string().email({ message: 'Please enter a valid email.' }).trim(),
   age: z.number().min(14, { message: 'Age must be at least 14.' }).max(150, { message: 'Age must be less then 150.' }),
   password: z
     .string()
-    .min(8, { message: 'Be at least 8 characters long.' })
-    .regex(/[a-zA-Z]/, { message: 'Contain at least one letter.' })
-    .regex(/[0-9]/, { message: 'Contain at least one number.' })
+    .min(8, { message: 'Must be at least 8 characters long.' })
+    .regex(/[a-zA-Z]/, { message: 'Must contain at least one letter.' })
+    .regex(/[0-9]/, { message: 'Must contain at least one number.' })
     .regex(/[^a-zA-Z0-9]/, {
-      message: 'Contain at least one special character.',
+      message: 'Must contain at least one special character.',
     })
     .trim(),
 });
@@ -29,6 +29,7 @@ export type UserDefinition = {
   username: string;
   email: string;
   isAdmin: boolean;
+  urlPath: string | null;
   registeredAt: Date | null;
 };
 

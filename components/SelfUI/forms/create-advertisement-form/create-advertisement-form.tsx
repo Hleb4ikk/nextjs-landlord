@@ -58,7 +58,10 @@ export function CreateAdvertisementForm() {
     <div className="">
       <section></section>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-8"
+        >
           <FormField
             control={form.control}
             name="title"
@@ -116,10 +119,16 @@ export function CreateAdvertisementForm() {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent className="border-2 border-[#363636] bg-[#1e1e1e] text-white drop-shadow-md">
-                    <SelectItem className="focus:bg-[#393939] focus:text-[#cccccc]" value="Rent">
+                    <SelectItem
+                      className="focus:bg-[#393939] focus:text-[#cccccc]"
+                      value="Rent"
+                    >
                       Rent
                     </SelectItem>
-                    <SelectItem className="focus:bg-[#393939] focus:text-[#cccccc]" value="Sell">
+                    <SelectItem
+                      className="focus:bg-[#393939] focus:text-[#cccccc]"
+                      value="Sell"
+                    >
                       Sell
                     </SelectItem>
                   </SelectContent>

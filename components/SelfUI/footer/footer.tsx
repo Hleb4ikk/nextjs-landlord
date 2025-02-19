@@ -5,9 +5,7 @@ import Link from 'next/link';
 import { House, Star, CirclePlus, MessageCircle, User } from 'lucide-react';
 import { useUser } from '@/contexts/user/user-context';
 
-const MobileBottomMenu = () => {
-  const user = useUser();
-
+const MobileBottomMenu = ({ username }: { username: string }) => {
   return (
     <footer className="fixed bottom-0 flex w-[100vw] justify-center gap-[14vw] border-t border-white pb-3 pt-3">
       {/* links for mobileBottomMenu */}
@@ -23,7 +21,7 @@ const MobileBottomMenu = () => {
       <Link href="/messages">
         <MessageCircle size={28} />
       </Link>
-      <Link href={`/${user?.username}`}>
+      <Link href={`/${username}`}>
         <User size={28} />
       </Link>
     </footer>
@@ -31,11 +29,11 @@ const MobileBottomMenu = () => {
 };
 
 export default function Footer() {
+  const user = useUser();
+
   return (
     <>
-      <div className="block md:hidden">
-        <MobileBottomMenu />
-      </div>
+      <div className="block md:hidden">{user && <MobileBottomMenu username={user?.username} />}</div>
     </>
   );
 }

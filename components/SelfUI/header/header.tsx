@@ -11,7 +11,7 @@ import { Suspense } from 'react';
 import { useUser } from '@/contexts/user/user-context';
 import { FormContainer } from '../forms/auth-forms/form-container';
 import { usePathname } from 'next/navigation';
-
+import { Button } from '@/components/ui/button';
 export default function Header({
   searchParams,
 }: {
@@ -64,9 +64,21 @@ export default function Header({
                 <UserMenu user={user} />
               </div>
             )}
-            {!user && <FormContainer />}
+            {!user && (
+              <FormContainer
+                childrenTrigger={
+                  <Button
+                    className="bg-opacity-0"
+                    variant={'outline'}
+                  >
+                    Sign In
+                  </Button>
+                }
+              ></FormContainer>
+            )}
             <button className="block md:hidden">
               <Bell size={28} />
+              {/* This button will show new notifications about advertisements */}
             </button>
           </div>
         </div>
