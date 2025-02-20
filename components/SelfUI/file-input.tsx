@@ -31,9 +31,10 @@ export function FileInput({ className }: { className?: string }) {
       />
       <Button
         onClick={handleButtonClick}
+        variant={'outline'}
         className={cn('flex items-center gap-2', className)}
       >
-        <Upload className="h-4 w-4" />
+        <Upload className="min-h-[20px] min-w-[20px]" />
       </Button>
     </>
   );

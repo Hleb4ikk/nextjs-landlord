@@ -20,6 +20,7 @@ export const getSessionUser = cache(async () => {
       username: user.username,
       email: user.email,
       isAdmin: user.role === 'admin',
+      urlPath: user.avatarPath,
       registeredAt: user.registeredAt,
     };
   } catch {
