@@ -20,7 +20,7 @@ export const getSessionUser = cache(async () => {
       username: user.username,
       email: user.email,
       isAdmin: user.role === 'admin',
-      avatarPath: user.avatarPath,
+      avatarKey: user.avatarKey,
       registeredAt: user.registeredAt,
     };
   } catch {
@@ -36,7 +36,7 @@ export const fetchGeneralUserDataByUsername = cache(async (username: string) => 
         id: UsersTable.id,
         username: UsersTable.username,
         email: UsersTable.email,
-        avatarPath: UsersTable.avatarPath,
+        avatarKey: UsersTable.avatarKey,
         registeredAt: UsersTable.registeredAt,
       })
       .from(UsersTable)

@@ -13,7 +13,7 @@ const AvatarImg = ({
 }) => {
   return (
     <Avatar className={className}>
-      <AvatarImage src={avatarPath !== null ? avatarPath : undefined} />
+      <AvatarImage src={avatarPath !== null ? 'https://gng2kyv0r8.ufs.sh/f/' + avatarPath : undefined} />
       <AvatarFallback className="bg-blue-100 antialiased">
         {username[0] + '' + username[username.length - 1]}
       </AvatarFallback>

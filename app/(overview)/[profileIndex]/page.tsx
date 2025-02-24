@@ -37,7 +37,7 @@ export default async function Profile({ params }: { params: { profileIndex: stri
         <div className="relative max-[540px]:aspect-square">
           <AvatarImg
             username={profile.username}
-            avatarPath={profile.avatarPath}
+            avatarPath={profile.avatarKey}
             className="h-[30vw] max-h-40 w-[30vw] max-w-40 text-[40px] md:size-40 md:text-[50px] lg:size-80 lg:max-h-80 lg:max-w-80 lg:text-[100px]"
           />
           {isAccountOwner && (
