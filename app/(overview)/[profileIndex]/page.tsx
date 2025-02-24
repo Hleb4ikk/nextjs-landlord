@@ -34,14 +34,15 @@ export default async function Profile({ params }: { params: { profileIndex: stri
   return (
     <div className="flex flex-col gap-6 md:grid md:grid-cols-5 md:gap-5">
       <div className="grid grid-cols-3 gap-2 md:col-span-2 md:flex md:flex-col md:gap-2">
-        <div className="relative">
-          {/* TODO: fix avatar image updload */}
+        <div className="relative max-[540px]:aspect-square">
           <AvatarImg
             username={profile.username}
+            avatarPath={profile.avatarPath}
             className="h-[30vw] max-h-40 w-[30vw] max-w-40 text-[40px] md:size-40 md:text-[50px] lg:size-80 lg:max-h-80 lg:max-w-80 lg:text-[100px]"
           />
-          <FileInput className="relative bottom-10 left-[100px] h-[60px] w-[60px] cursor-pointer rounded-full border-[2px] border-black bg-black bg-opacity-10 hover:bg-opacity-100 lg:left-[210px]" />
-          {/* className="relative bottom-10 left-[100px] size-[50px] rounded-full border-black bg-black bg-opacity-10 text-black hover:bg-black hover:text-white lg:left-[210px]" */}
+          {isAccountOwner && (
+            <FileInput className="absolute bottom-0 left-[20vw] h-[35px] w-[35px] cursor-pointer rounded-full border-[2px] border-black bg-black bg-opacity-10 hover:bg-opacity-100 sm:left-[110px] md:absolute md:bottom-0 lg:left-[210px] lg:h-[50px] lg:w-[50px]" />
+          )}
         </div>
         <div className="col-span-2 flex flex-col gap-2">
           <h1 className="text-lg md:text-3xl md:font-semibold">{profile?.username}</h1>
@@ -51,7 +52,7 @@ export default async function Profile({ params }: { params: { profileIndex: stri
           <div>On landlord from {profile?.registeredAt?.toLocaleDateString()}</div>
           {isAccountOwner && (
             <LinkButton
-              href="/catalog"
+              href="/settings/edit_profile"
               className="max-w-24"
             >
               Edit Profile

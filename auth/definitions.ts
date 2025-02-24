@@ -29,7 +29,7 @@ export type UserDefinition = {
   username: string;
   email: string;
   isAdmin: boolean;
-  urlPath: string | null;
+  avatarPath: string | null;
   registeredAt: Date | null;
 };
 

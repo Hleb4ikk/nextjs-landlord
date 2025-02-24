@@ -7,7 +7,7 @@
 - [x] User authentication signup, login, logout.
 - [x] Get user's profile.
 - [x] Get others users profile general information like time of registration, their ads.
-- [x] Create a new advertisements.
+- [x] Create new advertisements.
 - [x] Search for advertisements.
 - [x] Adaptive design.
 
@@ -24,6 +24,7 @@ $ git clone https://github.com/Hleb4ikk/nextjs-landlord
 cd reactjs-landlord
 $ npm install
 ```
+
 2. Create a `.env` file in the root directory and add the following variables:
 
 ```

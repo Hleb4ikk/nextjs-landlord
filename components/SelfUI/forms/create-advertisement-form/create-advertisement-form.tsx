@@ -41,18 +41,9 @@ export function CreateAdvertisementForm() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
     console.log(values);
   }
 
-  //   function handleImageUpload(event: React.ChangeEvent<HTMLInputElement>) {
-  //     const files = event.target.files;
-  //     if (files) {
-  //       const fileArray = Array.from(files).map((file) => URL.createObjectURL(file));
-  //       form.setValue('images', fileArray);
-  //     }
-  //   }
   const [isChosen, setIsChosen] = useState(false);
   return (
     <div className="">

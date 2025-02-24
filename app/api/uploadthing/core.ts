@@ -6,7 +6,6 @@ import { createUploadthing, type FileRouter } from 'uploadthing/next';
 import { UploadThingError } from 'uploadthing/server';
 
 const uploader = createUploadthing();
-
 export const AppFileRouter = {
   AvatarUploader: uploader({
     image: {
