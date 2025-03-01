@@ -78,7 +78,6 @@ export default function Header({
             )}
             <button className="block md:hidden">
               <Bell size={28} />
-              {/* This button will show new notifications about advertisements */}
             </button>
           </div>
         </div>

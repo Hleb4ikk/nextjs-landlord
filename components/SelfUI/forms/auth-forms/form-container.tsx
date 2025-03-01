@@ -6,13 +6,8 @@ import { X } from 'lucide-react';
 import { LoginForm } from './forms/login-form';
 import {
   AlertDialog,
-  //   AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
-  //   AlertDialogDescription,
-  //   AlertDialogFooter,
-  //   AlertDialogHeader,
-  //   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import { RegistrationForm } from './forms/registration-form';

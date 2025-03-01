@@ -15,6 +15,20 @@
       "when": 1739918814658,
       "tag": "0001_tidy_captain_cross",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1740421376846,
+      "tag": "0002_last_mysterio",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1740422423098,
+      "tag": "0003_aromatic_black_panther",
+      "breakpoints": true
     }
   ]
 }

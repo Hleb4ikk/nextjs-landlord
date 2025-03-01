@@ -1,13 +1,6 @@
 'use client';
 
-import {
-  Sheet,
-  SheetContent,
-  //SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import AvatarImg from '../avatar/avatar-img';
 import { useState } from 'react';
 import { Separator } from '@/components/ui/separator';
@@ -16,6 +9,9 @@ import Link from 'next/link';
 import { UserDefinition } from '@/auth/definitions';
 import { logout } from '@/auth/actions';
 import { useRouter } from 'next/navigation';
+
+// commented code in this file will be used in future
+
 export default function UserMenu({ user }: { user: UserDefinition }) {
   const [open, setOpen] = useState(false);
 
@@ -26,7 +22,10 @@ export default function UserMenu({ user }: { user: UserDefinition }) {
       onOpenChange={setOpen}
     >
       <SheetTrigger>
-        <AvatarImg username={user?.username} />
+        <AvatarImg
+          avatarPath={user.avatarPath}
+          username={user?.username}
+        />
       </SheetTrigger>
       <SheetContent className="border-none bg-[#222222]">
         <SheetHeader>
@@ -35,7 +34,7 @@ export default function UserMenu({ user }: { user: UserDefinition }) {
             <div className="pr-3">
               <AvatarImg
                 username={user.username}
-                urlPath={user.urlPath !== null ? user.urlPath : undefined}
+                avatarPath={user.avatarPath}
                 className="justify-self-end"
               />
             </div>
