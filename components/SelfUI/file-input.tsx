@@ -16,8 +16,8 @@ export function FileInput({ className }: { className?: string }) {
         content={{
           button() {
             return (
-              <div className="flex h-[40px] h-[50px] w-[40px] w-[50px] items-center justify-center">
-                <Upload className="h-[50%] w-[50%]" />
+              <div className="flex w-[120px] justify-center gap-2 rounded-lg border-[2px] p-1 text-lg hover:bg-white hover:text-black">
+                <Upload /> Upload
               </div>
             );
           },

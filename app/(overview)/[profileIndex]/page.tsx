@@ -5,7 +5,6 @@ import { fetchGeneralUserDataByUsername } from '@/data/user';
 import { verifySession } from '@/auth/stateless-session';
 import { getSessionUser } from '@/data/user';
 import Link from 'next/link';
-import { FileInput } from '@/components/SelfUI/file-input';
 
 export default async function Profile({ params }: { params: { profileIndex: string } }) {
   let profile = await fetchGeneralUserDataByUsername(params.profileIndex);
@@ -40,9 +39,6 @@ export default async function Profile({ params }: { params: { profileIndex: stri
             avatarPath={profile.avatarKey}
             className="h-[30vw] max-h-40 w-[30vw] max-w-40 text-[40px] md:size-40 md:text-[50px] lg:size-80 lg:max-h-80 lg:max-w-80 lg:text-[100px]"
           />
-          {isAccountOwner && (
-            <FileInput className="absolute bottom-0 left-[20vw] h-[35px] w-[35px] cursor-pointer rounded-full border-[2px] border-black bg-black bg-opacity-10 hover:bg-opacity-100 sm:left-[110px] md:absolute md:bottom-0 lg:left-[210px] lg:h-[50px] lg:w-[50px]" />
-          )}
         </div>
         <div className="col-span-2 flex flex-col gap-2">
           <h1 className="text-lg md:text-3xl md:font-semibold">{profile?.username}</h1>
