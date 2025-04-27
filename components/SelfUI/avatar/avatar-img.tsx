@@ -1,20 +1,19 @@
 'use client';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { cn } from '@/lib/utils';
 
 const AvatarImg = ({
   className,
-  urlPath,
   username,
+  avatarPath,
 }: {
   className?: string;
-  urlPath?: string | undefined;
   username: string;
+  avatarPath: string | null;
 }) => {
   return (
     <Avatar className={className}>
-      <AvatarImage src={urlPath} />
+      <AvatarImage src={avatarPath !== null ? 'https://gng2kyv0r8.ufs.sh/f/' + avatarPath : undefined} />
       <AvatarFallback className="bg-blue-100 antialiased">
         {username[0] + '' + username[username.length - 1]}
       </AvatarFallback>

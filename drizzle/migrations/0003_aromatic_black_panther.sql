@@ -1,0 +1,1 @@
+ALTER TABLE "users" RENAME COLUMN "avatar_id" TO "avatar_key";

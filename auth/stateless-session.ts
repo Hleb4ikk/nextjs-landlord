@@ -47,24 +47,6 @@ export async function verifySession() {
   return { isAuth: true, userId: String(session.userId) };
 }
 
-// export async function updateSession() {
-//   const session = cookies().get("session")?.value;
-//   const payload = await decrypt(session);
-
-//   if (!session || !payload) {
-//     return null;
-//   }
-
-//   const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
-//   cookies().set("session", session, {
-//     httpOnly: true,
-//     secure: true,
-//     expires: expires,
-//     sameSite: "lax",
-//     path: "/",
-//   });
-// }
-
 export async function updateSession(request: NextRequest) {
   const session = request.cookies.get('session')?.value;
 
