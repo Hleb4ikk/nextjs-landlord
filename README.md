@@ -7,7 +7,7 @@
 - [x] User authentication signup, login, logout.
 - [x] Get user's profile.
 - [x] Get others users profile general information like time of registration, their ads.
-- [x] Create a new advertisements.
+- [x] Create new advertisements.
 - [x] Search for advertisements.
 
 # Demo
